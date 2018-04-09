@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>gfx/lighthouse.ico</file>
+        <file>gfx/lighthouse.png</file>
+    </qresource>
+</RCC>

@@ -1,14 +1,13 @@
-#include "mainwindow.h"
+#include "LoginWindow.h"
 #include <QApplication>
+#include <QIcon>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
 
-    int abb = 3;
-    int bba = 2;
+    LoginWindow w;
+    w.show();
 
     return a.exec();
 }

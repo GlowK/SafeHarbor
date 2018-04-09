@@ -1,14 +1,14 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-04-08T23:11:08
+# Project created by QtCreator 2018-04-08T10:44:38
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = SafeHarbor
+TARGET = SafeHarbour
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -25,10 +25,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+    LoginWindow.cpp \
+    Authentication.cpp
 
 HEADERS += \
-        mainwindow.h
+    LoginWindow.h \
+    Authentication.h
 
 FORMS += \
-        mainwindow.ui
+    LoginWindow.ui
+
+RESOURCES += \
+    gfx.qrc
