@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>gfx/lighthouse.ico</file>
         <file>gfx/lighthouse.png</file>
+        <file>gfx/icon_minus.png</file>
+        <file>gfx/icon_plus.png</file>
     </qresource>
 </RCC>
