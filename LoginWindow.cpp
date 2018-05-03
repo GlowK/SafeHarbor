@@ -1,4 +1,5 @@
 #include "LoginWindow.h"
+#include "AdminPanel.h"
 #include "ui_loginwindow.h"
 #include "Authentication.h"
 #include <QMessageBox>
@@ -21,6 +22,10 @@ void LoginWindow::on_buttonLogin_clicked()
     {
         //ToDo: Open main screen of application.
         QMessageBox::information(this, "Success", "You are logged in!");
+        this->hide();
+        AdminPanel adminPanel;
+        adminPanel.setModal(true);
+        adminPanel.exec();
     }
     else
     {

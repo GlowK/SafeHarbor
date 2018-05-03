@@ -31,6 +31,11 @@ border-style: solid;
 border-radius: 7;
 }
 
+QPushButton:pressed{
+color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 241);
+}
+
 QComboBox {
 color: rgb(0, 0, 0);
 background-color: rgb(255, 255, 241);
@@ -510,12 +515,17 @@ padding: 2px 4px;
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/gfx/icon_minus.png);
+    <string notr="true">QPushButton{
+image: url(:/gfx/icon_minus_a.png);
 background-color: rgba(255, 255, 255, 0);
 border-width: 0px;
 border-style: solid;
 border-radius: 0;
-</string>
+}
+QPushButton:pressed{
+image: url(:/gfx/icon_minus_b.png);
+background-color: rgba(255, 255, 255, 0);
+}</string>
    </property>
    <property name="text">
     <string/>
@@ -531,12 +541,17 @@ border-radius: 0;
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/gfx/icon_plus.png);
+    <string notr="true">QPushButton{
+image: url(:/gfx/icon_plus_a.png);
 background-color: rgba(255, 255, 255, 0);
 border-width: 0px;
 border-style: solid;
 border-radius: 0;
-</string>
+}
+QPushButton:pressed{
+image: url(:/gfx/icon_plus_b.png);
+background-color: rgba(255, 255, 255, 0);
+}</string>
    </property>
    <property name="text">
     <string/>
@@ -737,12 +752,17 @@ border-radius: 7;
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/gfx/icon_plus.png);
+    <string notr="true">QPushButton{
+image: url(:/gfx/icon_plus_a.png);
 background-color: rgba(255, 255, 255, 0);
 border-width: 0px;
 border-style: solid;
 border-radius: 0;
-</string>
+}
+QPushButton:pressed{
+image: url(:/gfx/icon_plus_b.png);
+background-color: rgba(255, 255, 255, 0);
+}</string>
    </property>
    <property name="text">
     <string/>
@@ -758,12 +778,17 @@ border-radius: 0;
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/gfx/icon_minus.png);
+    <string notr="true">QPushButton{
+image: url(:/gfx/icon_minus_a.png);
 background-color: rgba(255, 255, 255, 0);
 border-width: 0px;
 border-style: solid;
 border-radius: 0;
-</string>
+}
+QPushButton:pressed{
+image: url(:/gfx/icon_minus_b.png);
+background-color: rgba(255, 255, 255, 0);
+}</string>
    </property>
    <property name="text">
     <string/>
@@ -779,12 +804,17 @@ border-radius: 0;
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/gfx/icon_minus.png);
+    <string notr="true">QPushButton{
+image: url(:/gfx/icon_minus_a.png);
 background-color: rgba(255, 255, 255, 0);
 border-width: 0px;
 border-style: solid;
 border-radius: 0;
-</string>
+}
+QPushButton:pressed{
+image: url(:/gfx/icon_minus_b.png);
+background-color: rgba(255, 255, 255, 0);
+}</string>
    </property>
    <property name="text">
     <string/>
@@ -800,12 +830,17 @@ border-radius: 0;
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/gfx/icon_plus.png);
+    <string notr="true">QPushButton{
+image: url(:/gfx/icon_plus_a.png);
 background-color: rgba(255, 255, 255, 0);
 border-width: 0px;
 border-style: solid;
 border-radius: 0;
-</string>
+}
+QPushButton:pressed{
+image: url(:/gfx/icon_plus_b.png);
+background-color: rgba(255, 255, 255, 0);
+}</string>
    </property>
    <property name="text">
     <string/>
@@ -821,12 +856,17 @@ border-radius: 0;
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/gfx/icon_minus.png);
+    <string notr="true">QPushButton{
+image: url(:/gfx/icon_minus_a.png);
 background-color: rgba(255, 255, 255, 0);
 border-width: 0px;
 border-style: solid;
 border-radius: 0;
-</string>
+}
+QPushButton:pressed{
+image: url(:/gfx/icon_minus_b.png);
+background-color: rgba(255, 255, 255, 0);
+}</string>
    </property>
    <property name="text">
     <string/>
@@ -842,12 +882,17 @@ border-radius: 0;
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/gfx/icon_plus.png);
+    <string notr="true">QPushButton{
+image: url(:/gfx/icon_plus_a.png);
 background-color: rgba(255, 255, 255, 0);
 border-width: 0px;
 border-style: solid;
 border-radius: 0;
-</string>
+}
+QPushButton:pressed{
+image: url(:/gfx/icon_plus_b.png);
+background-color: rgba(255, 255, 255, 0);
+}</string>
    </property>
    <property name="text">
     <string/>

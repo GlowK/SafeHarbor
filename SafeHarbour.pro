@@ -27,16 +27,19 @@ SOURCES += \
         main.cpp \
     LoginWindow.cpp \
     Authentication.cpp \
-    AdminPanel.cpp
+    AdminPanel.cpp \
+    AdminAddHarbour.cpp
 
 HEADERS += \
     LoginWindow.h \
     Authentication.h \
-    AdminPanel.h
+    AdminPanel.h \
+    AdminAddHarbour.h
 
 FORMS += \
     LoginWindow.ui \
-    AdminPanel.ui
+    AdminPanel.ui \
+    AdminAddHarbour.ui
 
 RESOURCES += \
     gfx.qrc
