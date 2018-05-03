@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>705</width>
-    <height>543</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -44,6 +44,10 @@ border-color: blue;
 border-width: 0px;
 border-style: solid;
 border-radius: 7;
+}
+QPushButton:pressed{
+color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 241);
 }</string>
    </property>
    <layout class="QGridLayout" name="gridLayout">
@@ -112,6 +116,9 @@ border-radius: 7;
       </property>
       <property name="text">
        <string>Log In</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
       </property>
      </widget>
     </item>

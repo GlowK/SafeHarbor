@@ -15,6 +15,9 @@ public:
     explicit AdminPanel(QWidget *parent = 0);
     ~AdminPanel();
 
+private slots:
+    void on_pushCreateNewHarbour_clicked();
+
 private:
     Ui::AdminPanel *ui;
 };

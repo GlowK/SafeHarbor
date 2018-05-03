@@ -1,5 +1,6 @@
 #include "AdminPanel.h"
 #include "ui_AdminPanel.h"
+#include "AdminAddHarbour.h"
 
 AdminPanel::AdminPanel(QWidget *parent) :
     QDialog(parent),
@@ -11,4 +12,11 @@ AdminPanel::AdminPanel(QWidget *parent) :
 AdminPanel::~AdminPanel()
 {
     delete ui;
+}
+
+void AdminPanel::on_pushCreateNewHarbour_clicked()
+{
+    AdminAddHarbour adminAddHarbour;
+    adminAddHarbour.setModal(true);
+    adminAddHarbour.exec();
 }
