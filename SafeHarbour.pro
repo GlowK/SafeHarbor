@@ -26,14 +26,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     LoginWindow.cpp \
-    Authentication.cpp
+    Authentication.cpp \
+    AdminPanel.cpp
 
 HEADERS += \
     LoginWindow.h \
-    Authentication.h
+    Authentication.h \
+    AdminPanel.h
 
 FORMS += \
-    LoginWindow.ui
+    LoginWindow.ui \
+    AdminPanel.ui
 
 RESOURCES += \
     gfx.qrc
