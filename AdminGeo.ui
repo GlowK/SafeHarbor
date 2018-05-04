@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AdminAddHarbour</class>
- <widget class="QDialog" name="AdminAddHarbour">
+ <class>AdminGeo</class>
+ <widget class="QDialog" name="AdminGeo">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>260</height>
+    <width>300</width>
+    <height>310</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Stwórz nowy port</string>
+   <string>Geolokalizacja</string>
   </property>
   <property name="windowIcon">
    <iconset resource="gfx.qrc">
@@ -56,43 +56,11 @@ border-radius: 10px;
 padding: 2px 4px;
 }</string>
   </property>
-  <widget class="QLabel" name="labelHeader">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>20</y>
-     <width>620</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Nowy port</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelName">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>60</y>
-     <width>200</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Nazwa:</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
   <widget class="QLabel" name="labelGeo">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>100</y>
+     <x>50</x>
+     <y>20</y>
      <width>200</width>
      <height>30</height>
     </rect>
@@ -104,120 +72,82 @@ padding: 2px 4px;
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="labelOwner">
+  <widget class="QPushButton" name="pushButtonGdansk">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>140</y>
-     <width>200</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Właściciel</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelWarehouse">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>180</y>
-     <width>200</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Magazyny</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEditName">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
+     <x>50</x>
      <y>60</y>
      <width>200</width>
      <height>30</height>
     </rect>
    </property>
    <property name="text">
-    <string>Wprowadź nazwę</string>
+    <string>Gdańsk</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditOwner">
+  <widget class="QPushButton" name="pushButtonGdynia">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>50</x>
+     <y>100</y>
+     <width>200</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Gdynia</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonFrankfurt">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
      <y>140</y>
      <width>200</width>
      <height>30</height>
     </rect>
    </property>
    <property name="text">
-    <string>Wprowadź właściciela</string>
+    <string>Frankfurt</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditWarehouse">
+  <widget class="QPushButton" name="pushButtonRoterdam">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>50</x>
      <y>180</y>
      <width>200</width>
      <height>30</height>
     </rect>
    </property>
    <property name="text">
-    <string>Wprowadź pojemność</string>
+    <string>Roterdam</string>
    </property>
   </widget>
-  <widget class="QLabel" name="labelShowGeo">
+  <widget class="QPushButton" name="pushButtonSydney">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>100</y>
-     <width>200</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: #99CCFF;</string>
-   </property>
-   <property name="text">
-    <string>Geolokalizacja</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushGeo">
-   <property name="geometry">
-    <rect>
-     <x>430</x>
-     <y>100</y>
-     <width>200</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Wybierz Geolokalizacje</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushSave">
-   <property name="geometry">
-    <rect>
-     <x>430</x>
+     <x>50</x>
      <y>220</y>
      <width>200</width>
      <height>30</height>
     </rect>
    </property>
    <property name="text">
-    <string>Zapisz</string>
+    <string>Sydney</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonHouston">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>260</y>
+     <width>200</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Houston</string>
    </property>
   </widget>
  </widget>

@@ -15,6 +15,9 @@ public:
     explicit AdminAddHarbour(QWidget *parent = 0);
     ~AdminAddHarbour();
 
+private slots:
+    void on_pushGeo_clicked();
+
 private:
     Ui::AdminAddHarbour *ui;
 };

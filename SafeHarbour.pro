@@ -28,18 +28,39 @@ SOURCES += \
     LoginWindow.cpp \
     Authentication.cpp \
     AdminPanel.cpp \
-    AdminAddHarbour.cpp
+    AdminAddHarbour.cpp \
+    AdminGeo.cpp \
+    AdminEditHarbour.cpp \
+    AdminAddClient.cpp \
+    AdminCorporation.cpp \
+    AdminEditClient.cpp \
+    AdminAddManager.cpp \
+    AdminEditManager.cpp
 
 HEADERS += \
     LoginWindow.h \
     Authentication.h \
     AdminPanel.h \
-    AdminAddHarbour.h
+    AdminAddHarbour.h \
+    AdminGeo.h \
+    AdminEditHarbour.h \
+    AdminAddClient.h \
+    AdminCorporation.h \
+    AdminEditClient.h \
+    AdminAddManager.h \
+    AdminEditManager.h
 
 FORMS += \
     LoginWindow.ui \
     AdminPanel.ui \
-    AdminAddHarbour.ui
+    AdminAddHarbour.ui \
+    AdminGeo.ui \
+    AdminEditHarbour.ui \
+    AdminAddClient.ui \
+    AdminCorporation.ui \
+    AdminEditClient.ui \
+    AdminAddManager.ui \
+    AdminEditManager.ui
 
 RESOURCES += \
     gfx.qrc

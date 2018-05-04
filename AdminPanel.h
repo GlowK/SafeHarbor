@@ -18,6 +18,16 @@ public:
 private slots:
     void on_pushCreateNewHarbour_clicked();
 
+    void on_pushEditHarbour_clicked();
+
+    void on_pushClientAdd_clicked();
+
+    void on_pushClientEdit_clicked();
+
+    void on_pushManagerAdd_clicked();
+
+    void on_pushManagerEdit_clicked();
+
 private:
     Ui::AdminPanel *ui;
 };

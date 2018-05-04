@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AdminAddHarbour</class>
- <widget class="QDialog" name="AdminAddHarbour">
+ <class>AdminAddClient</class>
+ <widget class="QDialog" name="AdminAddClient">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>640</width>
-    <height>260</height>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Stwórz nowy port</string>
+   <string>Nowy klient</string>
   </property>
   <property name="windowIcon">
    <iconset resource="gfx.qrc">
@@ -66,13 +66,13 @@ padding: 2px 4px;
     </rect>
    </property>
    <property name="text">
-    <string>Nowy port</string>
+    <string>Nowy klient</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="labelName">
+  <widget class="QLabel" name="labelLogin">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -82,13 +82,13 @@ padding: 2px 4px;
     </rect>
    </property>
    <property name="text">
-    <string>Nazwa:</string>
+    <string>Wprowadź login</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="labelGeo">
+  <widget class="QLabel" name="labelPassword">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -98,7 +98,39 @@ padding: 2px 4px;
     </rect>
    </property>
    <property name="text">
-    <string>Geolokalizacja</string>
+    <string>Wprowadź hasło</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelPassword_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>140</y>
+     <width>200</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Powtórz hasło</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelCorporation">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>180</y>
+     <width>200</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Korporacja</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -108,7 +140,7 @@ padding: 2px 4px;
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>140</y>
+     <y>220</y>
      <width>200</width>
      <height>30</height>
     </rect>
@@ -120,23 +152,7 @@ padding: 2px 4px;
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="labelWarehouse">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>180</y>
-     <width>200</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Magazyny</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEditName">
+  <widget class="QLineEdit" name="lineEditLogin">
    <property name="geometry">
     <rect>
      <x>220</x>
@@ -146,10 +162,29 @@ padding: 2px 4px;
     </rect>
    </property>
    <property name="text">
-    <string>Wprowadź nazwę</string>
+    <string>Wprowadź login</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditOwner">
+  <widget class="QLineEdit" name="lineEditPassword">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>100</y>
+     <width>200</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Wprowadź hasło</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditPassword_2">
    <property name="geometry">
     <rect>
      <x>220</x>
@@ -159,10 +194,23 @@ padding: 2px 4px;
     </rect>
    </property>
    <property name="text">
+    <string>Wprowadź hasło ponownie</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditOwner">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>220</y>
+     <width>200</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
     <string>Wprowadź właściciela</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditWarehouse">
+  <widget class="QLabel" name="labelShowCorporation">
    <property name="geometry">
     <rect>
      <x>220</x>
@@ -171,47 +219,34 @@ padding: 2px 4px;
      <height>30</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Wprowadź pojemność</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelShowGeo">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>100</y>
-     <width>200</width>
-     <height>30</height>
-    </rect>
-   </property>
    <property name="styleSheet">
     <string notr="true">background-color: #99CCFF;</string>
    </property>
    <property name="text">
-    <string>Geolokalizacja</string>
+    <string>Wybrana korporacja</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushGeo">
+  <widget class="QPushButton" name="pushButtonCorporation">
    <property name="geometry">
     <rect>
      <x>430</x>
-     <y>100</y>
+     <y>180</y>
      <width>200</width>
      <height>30</height>
     </rect>
    </property>
    <property name="text">
-    <string>Wybierz Geolokalizacje</string>
+    <string>Wybierz korporację</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushSave">
+  <widget class="QPushButton" name="pushButtonSave">
    <property name="geometry">
     <rect>
      <x>430</x>
-     <y>220</y>
+     <y>260</y>
      <width>200</width>
      <height>30</height>
     </rect>

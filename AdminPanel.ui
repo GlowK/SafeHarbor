@@ -129,7 +129,7 @@ padding: 2px 4px;
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>540</y>
+     <y>545</y>
      <width>780</width>
      <height>3</height>
     </rect>
@@ -492,7 +492,7 @@ padding: 2px 4px;
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>Edytuj klientów</string>
    </property>
   </widget>
   <widget class="QComboBox" name="comboBox">

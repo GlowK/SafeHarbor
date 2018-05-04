@@ -1,4 +1,5 @@
 #include "AdminAddHarbour.h"
+#include "AdminGeo.h"
 #include "ui_AdminAddHarbour.h"
 
 AdminAddHarbour::AdminAddHarbour(QWidget *parent) :
@@ -11,4 +12,11 @@ AdminAddHarbour::AdminAddHarbour(QWidget *parent) :
 AdminAddHarbour::~AdminAddHarbour()
 {
     delete ui;
+}
+
+void AdminAddHarbour::on_pushGeo_clicked()
+{
+    AdminGeo adminGeo;
+    adminGeo.setModal(true);
+    adminGeo.exec();
 }
