@@ -6,5 +6,6 @@
         <file>gfx/icon_minus_a.png</file>
         <file>gfx/icon_plus_a.png</file>
         <file>gfx/icon_plus_b.png</file>
+        <file>gfx/CorpLogo_Aria.png</file>
     </qresource>
 </RCC>

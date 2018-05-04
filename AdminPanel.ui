@@ -99,7 +99,7 @@ padding: 2px 4px;
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="Line" name="topLine">
+  <widget class="Line" name="LineTop">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -112,7 +112,7 @@ padding: 2px 4px;
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="Line" name="midLine">
+  <widget class="Line" name="LineMid">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -125,7 +125,7 @@ padding: 2px 4px;
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="Line" name="bottomLine">
+  <widget class="Line" name="LineBottom">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -417,7 +417,7 @@ padding: 2px 4px;
     <string>Odrzuć zmiany</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushAcceptPort_10">
+  <widget class="QPushButton" name="pushLogOut">
    <property name="geometry">
     <rect>
      <x>140</x>
