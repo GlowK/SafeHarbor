@@ -35,7 +35,9 @@ SOURCES += \
     AdminCorporation.cpp \
     AdminEditClient.cpp \
     AdminAddManager.cpp \
-    AdminEditManager.cpp
+    AdminEditManager.cpp \
+    ManagerPanel.cpp \
+    ClientPanel.cpp
 
 HEADERS += \
     LoginWindow.h \
@@ -48,7 +50,9 @@ HEADERS += \
     AdminCorporation.h \
     AdminEditClient.h \
     AdminAddManager.h \
-    AdminEditManager.h
+    AdminEditManager.h \
+    ManagerPanel.h \
+    ClientPanel.h
 
 FORMS += \
     LoginWindow.ui \
@@ -60,7 +64,9 @@ FORMS += \
     AdminCorporation.ui \
     AdminEditClient.ui \
     AdminAddManager.ui \
-    AdminEditManager.ui
+    AdminEditManager.ui \
+    ManagerPanel.ui \
+    ClientPanel.ui
 
 RESOURCES += \
     gfx.qrc
