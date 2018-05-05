@@ -1,4 +1,4 @@
-#include "GUI/ManagerPanel.h"
+#include "ManagerPanel.h"
 #include "ui_ManagerPanel.h"
 
 ManagerPanel::ManagerPanel(QWidget *parent) :
@@ -11,4 +11,9 @@ ManagerPanel::ManagerPanel(QWidget *parent) :
 ManagerPanel::~ManagerPanel()
 {
     delete ui;
+}
+
+void ManagerPanel::on_pushLogOut_clicked()
+{
+    this->close();
 }

@@ -28,6 +28,8 @@ private slots:
 
     void on_pushManagerEdit_clicked();
 
+    void on_pushLogOut_clicked();
+
 private:
     Ui::AdminPanel *ui;
 };

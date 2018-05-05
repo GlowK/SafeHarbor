@@ -15,6 +15,9 @@ public:
     explicit ManagerPanel(QWidget *parent = 0);
     ~ManagerPanel();
 
+private slots:
+    void on_pushLogOut_clicked();
+
 private:
     Ui::ManagerPanel *ui;
 };

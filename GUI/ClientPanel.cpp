@@ -1,4 +1,4 @@
-#include "GUI/ClientPanel.h"
+#include "ClientPanel.h"
 #include "ui_ClientPanel.h"
 
 ClientPanel::ClientPanel(QWidget *parent) :
@@ -11,4 +11,9 @@ ClientPanel::ClientPanel(QWidget *parent) :
 ClientPanel::~ClientPanel()
 {
     delete ui;
+}
+
+void ClientPanel::on_pushLogOut_clicked()
+{
+    this->close();
 }

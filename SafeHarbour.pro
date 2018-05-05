@@ -37,7 +37,8 @@ SOURCES += \
     GUI/ClientPanel.cpp \
     GUI/LoginWindow.cpp \
     GUI/ManagerPanel.cpp \
-    main.cpp
+    main.cpp \
+    AuxClass/SQLConnect.cpp
 
 HEADERS += \
     GUI/AdminAddClient.h \
@@ -52,7 +53,8 @@ HEADERS += \
     AuxClass/Authentication.h \
     GUI/ClientPanel.h \
     GUI/LoginWindow.h \
-    GUI/ManagerPanel.h
+    GUI/ManagerPanel.h \
+    AuxClass/SQLConnect.h
 
 FORMS += \
     GUI/AdminAddClient.ui \
