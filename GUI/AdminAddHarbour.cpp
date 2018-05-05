@@ -1,5 +1,5 @@
-#include "AdminAddHarbour.h"
-#include "AdminGeo.h"
+#include "GUI/AdminAddHarbour.h"
+#include "GUI/AdminGeo.h"
 #include "ui_AdminAddHarbour.h"
 
 AdminAddHarbour::AdminAddHarbour(QWidget *parent) :

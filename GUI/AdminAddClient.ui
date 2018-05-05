@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AdminAddManager</class>
- <widget class="QDialog" name="AdminAddManager">
+ <class>AdminAddClient</class>
+ <widget class="QDialog" name="AdminAddClient">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>640</width>
-    <height>220</height>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dodaj zarządce portu</string>
+   <string>Nowy klient</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="gfx.qrc">
+   <iconset resource="../gfx.qrc">
     <normaloff>:/gfx/lighthouse.ico</normaloff>:/gfx/lighthouse.ico</iconset>
   </property>
   <property name="styleSheet">
@@ -54,15 +54,6 @@ selection-background-color: rgb(191, 31, 127);
 border: 2px;
 border-radius: 10px;
 padding: 2px 4px;
-}
-
-QComboBox {
-color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 241);
-border-color: blue;
-border-width: 0px;
-border-style: solid;
-border-radius: 7;
 }</string>
   </property>
   <widget class="QLabel" name="labelHeader">
@@ -75,7 +66,7 @@ border-radius: 7;
     </rect>
    </property>
    <property name="text">
-    <string>Nowy zarządca portu</string>
+    <string>Nowy klient</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -91,7 +82,7 @@ border-radius: 7;
     </rect>
    </property>
    <property name="text">
-    <string>Wprowadź login:</string>
+    <string>Wprowadź login</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -107,7 +98,7 @@ border-radius: 7;
     </rect>
    </property>
    <property name="text">
-    <string>Wprowadź hasło:</string>
+    <string>Wprowadź hasło</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -123,7 +114,39 @@ border-radius: 7;
     </rect>
    </property>
    <property name="text">
-    <string>Wprowadzź hasło ponownie:</string>
+    <string>Powtórz hasło</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelCorporation">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>180</y>
+     <width>200</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Korporacja</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelOwner">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>220</y>
+     <width>200</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Właściciel</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -141,6 +164,9 @@ border-radius: 7;
    <property name="text">
     <string>Wprowadź login</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEditPassword">
    <property name="geometry">
@@ -153,6 +179,9 @@ border-radius: 7;
    </property>
    <property name="text">
     <string>Wprowadź hasło</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEditPassword_2">
@@ -168,11 +197,56 @@ border-radius: 7;
     <string>Wprowadź hasło ponownie</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButtonSave">
+  <widget class="QLineEdit" name="lineEditOwner">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>220</y>
+     <width>200</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Wprowadź właściciela</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelShowCorporation">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>180</y>
+     <width>200</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #99CCFF;</string>
+   </property>
+   <property name="text">
+    <string>Wybrana korporacja</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonCorporation">
    <property name="geometry">
     <rect>
      <x>430</x>
      <y>180</y>
+     <width>200</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Wybierz korporację</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonSave">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>260</y>
      <width>200</width>
      <height>30</height>
     </rect>
@@ -183,7 +257,7 @@ border-radius: 7;
   </widget>
  </widget>
  <resources>
-  <include location="gfx.qrc"/>
+  <include location="../gfx.qrc"/>
  </resources>
  <connections/>
 </ui>

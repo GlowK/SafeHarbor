@@ -1,4 +1,4 @@
-#include "AdminGeo.h"
+#include "GUI/AdminGeo.h"
 #include "ui_AdminGeo.h"
 
 AdminGeo::AdminGeo(QWidget *parent) :

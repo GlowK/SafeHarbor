@@ -14,7 +14,7 @@
    <string>Geolokalizacja</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="gfx.qrc">
+   <iconset resource="../gfx.qrc">
     <normaloff>:/gfx/lighthouse.ico</normaloff>:/gfx/lighthouse.ico</iconset>
   </property>
   <property name="styleSheet">
@@ -152,7 +152,7 @@ padding: 2px 4px;
   </widget>
  </widget>
  <resources>
-  <include location="gfx.qrc"/>
+  <include location="../gfx.qrc"/>
  </resources>
  <connections/>
 </ui>

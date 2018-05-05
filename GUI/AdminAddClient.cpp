@@ -1,6 +1,6 @@
-#include "AdminAddClient.h"
+#include "GUI/AdminAddClient.h"
 #include "ui_AdminAddClient.h"
-#include "AdminCorporation.h"
+#include "GUI/AdminCorporation.h"
 
 AdminAddClient::AdminAddClient(QWidget *parent) :
     QDialog(parent),

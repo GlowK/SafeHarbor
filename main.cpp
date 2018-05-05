@@ -1,4 +1,4 @@
-#include "LoginWindow.h"
+#include "GUI/LoginWindow.h"
 #include <QApplication>
 #include <QIcon>
 

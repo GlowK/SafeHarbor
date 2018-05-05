@@ -1,6 +1,6 @@
-#include "AdminEditClient.h"
+#include "GUI/AdminEditClient.h"
 #include "ui_AdminEditClient.h"
-#include "AdminCorporation.h"
+#include "GUI/AdminCorporation.h"
 
 AdminEditClient::AdminEditClient(QWidget *parent) :
     QDialog(parent),

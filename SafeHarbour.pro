@@ -24,49 +24,49 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
-    LoginWindow.cpp \
-    Authentication.cpp \
-    AdminPanel.cpp \
-    AdminAddHarbour.cpp \
-    AdminGeo.cpp \
-    AdminEditHarbour.cpp \
-    AdminAddClient.cpp \
-    AdminCorporation.cpp \
-    AdminEditClient.cpp \
-    AdminAddManager.cpp \
-    AdminEditManager.cpp \
-    ManagerPanel.cpp \
-    ClientPanel.cpp
+    GUI/AdminAddClient.cpp \
+    GUI/AdminAddHarbour.cpp \
+    GUI/AdminAddManager.cpp \
+    GUI/AdminCorporation.cpp \
+    GUI/AdminEditClient.cpp \
+    GUI/AdminEditHarbour.cpp \
+    GUI/AdminEditManager.cpp \
+    GUI/AdminGeo.cpp \
+    GUI/AdminPanel.cpp \
+    AuxClass/Authentication.cpp \
+    GUI/ClientPanel.cpp \
+    GUI/LoginWindow.cpp \
+    GUI/ManagerPanel.cpp \
+    main.cpp
 
 HEADERS += \
-    LoginWindow.h \
-    Authentication.h \
-    AdminPanel.h \
-    AdminAddHarbour.h \
-    AdminGeo.h \
-    AdminEditHarbour.h \
-    AdminAddClient.h \
-    AdminCorporation.h \
-    AdminEditClient.h \
-    AdminAddManager.h \
-    AdminEditManager.h \
-    ManagerPanel.h \
-    ClientPanel.h
+    GUI/AdminAddClient.h \
+    GUI/AdminAddHarbour.h \
+    GUI/AdminAddManager.h \
+    GUI/AdminCorporation.h \
+    GUI/AdminEditClient.h \
+    GUI/AdminEditHarbour.h \
+    GUI/AdminEditManager.h \
+    GUI/AdminGeo.h \
+    GUI/AdminPanel.h \
+    AuxClass/Authentication.h \
+    GUI/ClientPanel.h \
+    GUI/LoginWindow.h \
+    GUI/ManagerPanel.h
 
 FORMS += \
-    LoginWindow.ui \
-    AdminPanel.ui \
-    AdminAddHarbour.ui \
-    AdminGeo.ui \
-    AdminEditHarbour.ui \
-    AdminAddClient.ui \
-    AdminCorporation.ui \
-    AdminEditClient.ui \
-    AdminAddManager.ui \
-    AdminEditManager.ui \
-    ManagerPanel.ui \
-    ClientPanel.ui
+    GUI/AdminAddClient.ui \
+    GUI/AdminAddHarbour.ui \
+    GUI/AdminAddManager.ui \
+    GUI/AdminCorporation.ui \
+    GUI/AdminEditClient.ui \
+    GUI/AdminEditHarbour.ui \
+    GUI/AdminEditManager.ui \
+    GUI/AdminGeo.ui \
+    GUI/AdminPanel.ui \
+    GUI/ClientPanel.ui \
+    GUI/LoginWindow.ui \
+    GUI/ManagerPanel.ui
 
 RESOURCES += \
-    gfx.qrc
+    gfx.qrc \

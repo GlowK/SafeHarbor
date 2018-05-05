@@ -14,7 +14,7 @@
    <string>Panel zarządcy</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="gfx.qrc">
+   <iconset resource="../gfx.qrc">
     <normaloff>:/gfx/lighthouse.ico</normaloff>:/gfx/lighthouse.ico</iconset>
   </property>
   <property name="styleSheet">
@@ -594,7 +594,7 @@ background-color: rgba(255, 255, 255, 0);</string>
   </widget>
  </widget>
  <resources>
-  <include location="gfx.qrc"/>
+  <include location="../gfx.qrc"/>
  </resources>
  <connections/>
 </ui>

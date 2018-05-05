@@ -1,11 +1,11 @@
-#include "AdminPanel.h"
+#include "GUI/AdminPanel.h"
 #include "ui_AdminPanel.h"
-#include "AdminAddHarbour.h"
-#include "AdminEditHarbour.h"
-#include "AdminAddClient.h"
-#include "AdminEditClient.h"
-#include "AdminAddManager.h"
-#include "AdminEditManager.h"
+#include "GUI/AdminAddHarbour.h"
+#include "GUI/AdminEditHarbour.h"
+#include "GUI/AdminAddClient.h"
+#include "GUI/AdminEditClient.h"
+#include "GUI/AdminAddManager.h"
+#include "GUI/AdminEditManager.h"
 
 AdminPanel::AdminPanel(QWidget *parent) :
     QDialog(parent),

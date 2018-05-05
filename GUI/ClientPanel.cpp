@@ -1,4 +1,4 @@
-#include "ClientPanel.h"
+#include "GUI/ClientPanel.h"
 #include "ui_ClientPanel.h"
 
 ClientPanel::ClientPanel(QWidget *parent) :

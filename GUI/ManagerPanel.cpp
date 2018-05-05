@@ -1,4 +1,4 @@
-#include "ManagerPanel.h"
+#include "GUI/ManagerPanel.h"
 #include "ui_ManagerPanel.h"
 
 ManagerPanel::ManagerPanel(QWidget *parent) :

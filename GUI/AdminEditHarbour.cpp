@@ -1,6 +1,6 @@
-#include "AdminEditHarbour.h"
+#include "GUI/AdminEditHarbour.h"
 #include "ui_AdminEditHarbour.h"
-#include "AdminGeo.h"
+#include "GUI/AdminGeo.h"
 
 AdminEditHarbour::AdminEditHarbour(QWidget *parent) :
     QDialog(parent),
