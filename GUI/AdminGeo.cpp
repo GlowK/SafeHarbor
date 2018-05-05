@@ -12,3 +12,8 @@ AdminGeo::~AdminGeo()
 {
     delete ui;
 }
+
+void AdminGeo::on_pushButtonShanghai_clicked()
+{
+
+}

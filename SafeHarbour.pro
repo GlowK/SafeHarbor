@@ -38,7 +38,9 @@ SOURCES += \
     GUI/LoginWindow.cpp \
     GUI/ManagerPanel.cpp \
     main.cpp \
-    AuxClass/SQLConnect.cpp
+    AuxClass/SQLConnect.cpp \
+    MainClass/Port.cpp \
+    MainClass/GeoCoordinate.cpp
 
 HEADERS += \
     GUI/AdminAddClient.h \
@@ -54,7 +56,9 @@ HEADERS += \
     GUI/ClientPanel.h \
     GUI/LoginWindow.h \
     GUI/ManagerPanel.h \
-    AuxClass/SQLConnect.h
+    AuxClass/SQLConnect.h \
+    MainClass/Port.h \
+    MainClass/GeoCoordinate.h
 
 FORMS += \
     GUI/AdminAddClient.ui \

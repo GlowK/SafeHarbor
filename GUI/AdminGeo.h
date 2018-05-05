@@ -15,6 +15,9 @@ public:
     explicit AdminGeo(QWidget *parent = 0);
     ~AdminGeo();
 
+private slots:
+    void on_pushButtonShanghai_clicked();
+
 private:
     Ui::AdminGeo *ui;
 };

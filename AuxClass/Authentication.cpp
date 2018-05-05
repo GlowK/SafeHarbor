@@ -40,7 +40,6 @@ int Authentication::checkCredentials(QString username, QString password)
     query.exec();
     query.first();
     QString accountType = query.value(0).toString();
-    qDebug() << accountType;
 
     if(accountType == "Admin")
     {
@@ -58,6 +57,7 @@ int Authentication::checkCredentials(QString username, QString password)
         return VALID_MANGER;
     }
     SQLConnect::DisconnectDB();
+    return INCORRECT_CREDENTAILS;
 }
 
 //ToDo: Use real hashing function.

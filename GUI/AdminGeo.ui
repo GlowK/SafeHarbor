@@ -72,7 +72,7 @@ padding: 2px 4px;
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButtonGdansk">
+  <widget class="QPushButton" name="pushButtonShanghai">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -82,10 +82,10 @@ padding: 2px 4px;
     </rect>
    </property>
    <property name="text">
-    <string>Gdańsk</string>
+    <string>Szanghaj</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButtonGdynia">
+  <widget class="QPushButton" name="pushButtonSingapore">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -95,7 +95,7 @@ padding: 2px 4px;
     </rect>
    </property>
    <property name="text">
-    <string>Gdynia</string>
+    <string>Singapur</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButtonFrankfurt">
@@ -108,7 +108,7 @@ padding: 2px 4px;
     </rect>
    </property>
    <property name="text">
-    <string>Frankfurt</string>
+    <string>Boston</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButtonRoterdam">
