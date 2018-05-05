@@ -1,4 +1,4 @@
-#include "GUI/AdminCorporation.h"
+#include "AdminCorporation.h"
 #include "ui_AdminCorporation.h"
 
 AdminCorporation::AdminCorporation(QWidget *parent) :

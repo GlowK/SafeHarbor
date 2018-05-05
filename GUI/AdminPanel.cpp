@@ -1,11 +1,11 @@
-#include "GUI/AdminPanel.h"
+#include "AdminPanel.h"
 #include "ui_AdminPanel.h"
-#include "GUI/AdminAddHarbour.h"
-#include "GUI/AdminEditHarbour.h"
-#include "GUI/AdminAddClient.h"
-#include "GUI/AdminEditClient.h"
-#include "GUI/AdminAddManager.h"
-#include "GUI/AdminEditManager.h"
+#include "AdminAddHarbour.h"
+#include "AdminEditHarbour.h"
+#include "AdminAddClient.h"
+#include "AdminEditClient.h"
+#include "AdminAddManager.h"
+#include "AdminEditManager.h"
 
 AdminPanel::AdminPanel(QWidget *parent) :
     QDialog(parent),
@@ -59,4 +59,9 @@ void AdminPanel::on_pushManagerEdit_clicked()
     AdminEditManager adminEditManager;
     adminEditManager.setModal(true);
     adminEditManager.exec();
+}
+
+void AdminPanel::on_pushLogOut_clicked()
+{
+    this->close();
 }

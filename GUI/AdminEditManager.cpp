@@ -1,4 +1,4 @@
-#include "GUI/AdminEditManager.h"
+#include "AdminEditManager.h"
 #include "ui_AdminEditManager.h"
 
 AdminEditManager::AdminEditManager(QWidget *parent) :

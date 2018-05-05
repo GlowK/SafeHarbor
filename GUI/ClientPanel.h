@@ -15,6 +15,9 @@ public:
     explicit ClientPanel(QWidget *parent = 0);
     ~ClientPanel();
 
+private slots:
+    void on_pushLogOut_clicked();
+
 private:
     Ui::ClientPanel *ui;
 };
