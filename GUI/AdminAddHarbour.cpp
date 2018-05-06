@@ -7,6 +7,7 @@ AdminAddHarbour::AdminAddHarbour(QWidget *parent) :
     ui(new Ui::AdminAddHarbour)
 {
     ui->setupUi(this);
+
 }
 
 AdminAddHarbour::~AdminAddHarbour()
@@ -14,9 +15,19 @@ AdminAddHarbour::~AdminAddHarbour()
     delete ui;
 }
 
+    /*
+     * Opisujemy co robi nasz RECEIVER
+     * */
+
+void AdminAddHarbour::receiveGeoLocation(QString value){
+    ui->labelShowGeo->setText(value);
+}
+
+
 void AdminAddHarbour::on_pushGeo_clicked()
 {
-    AdminGeo adminGeo;
+    AdminGeo adminGeo(this); //dopisujemy (parent) w deklaracji
     adminGeo.setModal(true);
     adminGeo.exec();
 }
+
