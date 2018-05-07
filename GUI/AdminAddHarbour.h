@@ -3,6 +3,9 @@
 
 #include <QDialog>
 #include <QString>
+#include "MainClass/Port.h"
+#include "MainClass/GeoCoordinate.h"
+#include "QString"
 
 namespace Ui {
 class AdminAddHarbour;
@@ -14,6 +17,8 @@ class AdminAddHarbour : public QDialog
 
 public:
     explicit AdminAddHarbour(QWidget *parent = 0);
+    Port tempPort;
+
     ~AdminAddHarbour();
 
     /*
@@ -21,7 +26,7 @@ public:
      * */
 
 public slots:
-    void receiveGeoLocation(QString);
+    void receiveGeoLocation(QString, double, double);
 
 private slots:
     void on_pushGeo_clicked();

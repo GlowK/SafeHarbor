@@ -16,6 +16,10 @@ public:
     int dock;
 
     Port(QString name, QString owner, GeoCoordinate location);
+    Port();
+    void setName(const QString &value);
+    void setOwner(const QString &value);
+    void setNumberOfTugboats(int value);
 };
 
 #endif // PORT_H

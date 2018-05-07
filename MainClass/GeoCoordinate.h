@@ -7,6 +7,7 @@ class GeoCoordinate
 public:
     double geoLatitude;
     double geoLongitude;
+public:
     GeoCoordinate(double latitude, double longitude);
     GeoCoordinate();
 };

@@ -31,13 +31,24 @@ public:
      * */
 
 signals:
-    void sendGeoLocation(QString);
+    void sendGeoLocation(QString,double, double);
 
 private slots:
     void on_pushButtonShanghai_clicked();
 
+    void on_pushButtonSingapore_clicked();
+
+    void on_pushButtonBoston_clicked();
+
+    void on_pushButtonRotterdam_clicked();
+
+    void on_pushButtonSydney_clicked();
+
+    void on_pushButtonHouston_clicked();
+
 private:
     Ui::AdminGeo *ui;
+    double * getGeoCoordinates(QString name);
 };
 
 #endif // ADMINGEO_H

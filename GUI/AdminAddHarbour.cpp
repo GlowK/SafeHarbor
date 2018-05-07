@@ -2,12 +2,12 @@
 #include "AdminGeo.h"
 #include "ui_AdminAddHarbour.h"
 
+
 AdminAddHarbour::AdminAddHarbour(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AdminAddHarbour)
 {
     ui->setupUi(this);
-
 }
 
 AdminAddHarbour::~AdminAddHarbour()
@@ -19,8 +19,10 @@ AdminAddHarbour::~AdminAddHarbour()
      * Opisujemy co robi nasz RECEIVER
      * */
 
-void AdminAddHarbour::receiveGeoLocation(QString value){
+void AdminAddHarbour::receiveGeoLocation(QString value, double latitude, double longitude){
     ui->labelShowGeo->setText(value);
+    tempPort.location.geoLatitude = latitude;
+    tempPort.location.geoLongitude = longitude;
 }
 
 
@@ -30,4 +32,6 @@ void AdminAddHarbour::on_pushGeo_clicked()
     adminGeo.setModal(true);
     adminGeo.exec();
 }
+
+
 
