@@ -27,12 +27,17 @@ public:
 
 public slots:
     void receiveGeoLocation(QString, double, double);
+    void receiveGeoLocationName(QString);
 
 private slots:
     void on_pushGeo_clicked();
 
+    void on_pushSave_clicked();
+
 private:
     Ui::AdminAddHarbour *ui;
+    void updateTempPort(QString, int);
+    void addPortToDatabase(Port);
 };
 
 #endif // ADMINADDHARBOUR_H

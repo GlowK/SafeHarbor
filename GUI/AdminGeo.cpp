@@ -40,6 +40,11 @@ double * AdminGeo::getGeoCoordinates(QString cityName){
     return geoArray;
 }
 
+void AdminGeo::connectGeoNameSS(QString cityName){
+    connect(this, SIGNAL(sendGeoLocationName(QString)), parent(),SLOT(receiveGeoLocationName(QString)));
+    emit sendGeoLocationName(cityName);
+}
+
 void AdminGeo::connectGeoSS(QString cityName, double latitude, double longitude){
     /*
      * connect(
@@ -68,6 +73,7 @@ void AdminGeo::connectGeoSS(QString cityName, double latitude, double longitude)
 void AdminGeo::on_pushButtonShanghai_clicked()
 {
     QString cityName = "Shanghai";
+    connectGeoNameSS(cityName);
     double * geoPointer = getGeoCoordinates(cityName);
     cityName = "Szanghaj";
     connectGeoSS(cityName, *geoPointer,*(geoPointer + 1));
@@ -77,6 +83,7 @@ void AdminGeo::on_pushButtonShanghai_clicked()
 void AdminGeo::on_pushButtonSingapore_clicked()
 {
     QString cityName = "Singapore";
+    connectGeoNameSS(cityName);
     double * geoPointer = getGeoCoordinates(cityName);
     cityName = "Singapur"; // Polish Name
     connectGeoSS(cityName, *geoPointer,*(geoPointer + 1));
@@ -86,6 +93,7 @@ void AdminGeo::on_pushButtonSingapore_clicked()
 void AdminGeo::on_pushButtonBoston_clicked()
 {
     QString cityName = "Boston";
+    connectGeoNameSS(cityName);
     double * geoPointer = getGeoCoordinates(cityName);
     cityName = "Boston"; // Polish Name
     connectGeoSS(cityName, *geoPointer,*(geoPointer + 1));
@@ -95,6 +103,7 @@ void AdminGeo::on_pushButtonBoston_clicked()
 void AdminGeo::on_pushButtonRotterdam_clicked()
 {
     QString cityName = "Rotterdam";
+    connectGeoNameSS(cityName);
     double * geoPointer = getGeoCoordinates(cityName);
     cityName = "Roterdam"; // Polish Name
     connectGeoSS(cityName, *geoPointer,*(geoPointer + 1));
@@ -104,6 +113,7 @@ void AdminGeo::on_pushButtonRotterdam_clicked()
 void AdminGeo::on_pushButtonSydney_clicked()
 {
     QString cityName = "Sydney";
+    connectGeoNameSS(cityName);
     double * geoPointer = getGeoCoordinates(cityName);
     cityName = "Sydney"; // Polish Name
     connectGeoSS(cityName, *geoPointer,*(geoPointer + 1));
@@ -113,6 +123,7 @@ void AdminGeo::on_pushButtonSydney_clicked()
 void AdminGeo::on_pushButtonHouston_clicked()
 {
     QString cityName = "Houston";
+    connectGeoNameSS(cityName);
     double * geoPointer = getGeoCoordinates(cityName);
     cityName = "Houston"; // Polish Name
     connectGeoSS(cityName, *geoPointer,*(geoPointer + 1));

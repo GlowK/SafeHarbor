@@ -32,6 +32,7 @@ public:
 
 signals:
     void sendGeoLocation(QString,double, double);
+    void sendGeoLocationName(QString);
 
 private slots:
     void on_pushButtonShanghai_clicked();
@@ -50,6 +51,7 @@ private:
     Ui::AdminGeo *ui;
     double * getGeoCoordinates(QString name);
     void connectGeoSS(QString cityName, double latitude, double longitude);
+    void connectGeoNameSS(QString cityName);
 };
 
 #endif // ADMINGEO_H
