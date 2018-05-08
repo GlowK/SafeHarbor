@@ -49,6 +49,7 @@ private slots:
 private:
     Ui::AdminGeo *ui;
     double * getGeoCoordinates(QString name);
+    void connectGeoSS(QString cityName, double latitude, double longitude);
 };
 
 #endif // ADMINGEO_H
