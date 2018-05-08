@@ -6,12 +6,18 @@
 #include "AdminEditClient.h"
 #include "AdminAddManager.h"
 #include "AdminEditManager.h"
+#include "AuxClass/SQLConnect.h"
+#include <QString>
+#include <QSqlDatabase>
+#include <QSqlQueryModel>
+
 
 AdminPanel::AdminPanel(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AdminPanel)
 {
     ui->setupUi(this);
+    populateComboBox();
 }
 
 AdminPanel::~AdminPanel()
@@ -19,11 +25,19 @@ AdminPanel::~AdminPanel()
     delete ui;
 }
 
+void AdminPanel::populateComboBox(){
+    SQLConnect::ConnectToDB();
+    QSqlQueryModel *model = new QSqlQueryModel();
+    model->setQuery("SELECT Name FROM SafeHarbour.Port ORDER BY Name ASC;");
+    ui->comboBox->setModel(model);
+}
+
 void AdminPanel::on_pushCreateNewHarbour_clicked()
 {
     AdminAddHarbour adminAddHarbour;
     adminAddHarbour.setModal(true);
     adminAddHarbour.exec();
+    populateComboBox();
 }
 
 void AdminPanel::on_pushEditHarbour_clicked()

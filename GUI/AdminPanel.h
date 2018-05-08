@@ -32,6 +32,7 @@ private slots:
 
 private:
     Ui::AdminPanel *ui;
+    void populateComboBox();
 };
 
 #endif // ADMINPANEL_H

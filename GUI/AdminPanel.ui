@@ -1064,6 +1064,52 @@ border-radius: 7;
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QLabel" name="labelPortChose_2">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>10</y>
+     <width>200</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(153, 153, 153);
+selection-color: white;
+selection-background-color: rgb(191, 31, 127);
+border: 2px;
+border-radius: 10px;
+padding: 2px 4px;
+
+</string>
+   </property>
+   <property name="text">
+    <string>Wybrany port</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelShowChoosenPort">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>55</y>
+     <width>200</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #99CCFF;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
  </widget>
  <resources>
   <include location="../gfx.qrc"/>
