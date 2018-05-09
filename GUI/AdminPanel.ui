@@ -898,7 +898,7 @@ background-color: rgba(255, 255, 255, 0);
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="labelAnchorageCount">
+  <widget class="QLabel" name="labelShowAnchorageCopacity">
    <property name="geometry">
     <rect>
      <x>225</x>
@@ -909,7 +909,7 @@ background-color: rgba(255, 255, 255, 0);
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 241);
+background-color: #99CCFF;
 border-color: blue;
 border-width: 0px;
 border-style: solid;
@@ -917,13 +917,13 @@ border-radius: 7;
 </string>
    </property>
    <property name="text">
-    <string>20</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="labelCorridorCount">
+  <widget class="QLabel" name="labelShowCorridorCount">
    <property name="geometry">
     <rect>
      <x>225</x>
@@ -934,7 +934,7 @@ border-radius: 7;
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 241);
+background-color: #99CCFF;
 border-color: blue;
 border-width: 0px;
 border-style: solid;
@@ -942,13 +942,13 @@ border-radius: 7;
 </string>
    </property>
    <property name="text">
-    <string>20</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="labelDockCount">
+  <widget class="QLabel" name="labelShowDockCount">
    <property name="geometry">
     <rect>
      <x>225</x>
@@ -959,21 +959,20 @@ border-radius: 7;
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 241);
+background-color: #99CCFF;
 border-color: blue;
 border-width: 0px;
 border-style: solid;
-border-radius: 7;
-</string>
+border-radius: 7;</string>
    </property>
    <property name="text">
-    <string>20</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="labelTugboatCount">
+  <widget class="QLabel" name="labelShowTugboatCount">
    <property name="geometry">
     <rect>
      <x>225</x>
@@ -984,15 +983,14 @@ border-radius: 7;
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 241);
+background-color: #99CCFF;
 border-color: blue;
 border-width: 0px;
 border-style: solid;
-border-radius: 7;
-</string>
+border-radius: 7;</string>
    </property>
    <property name="text">
-    <string>20</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -1025,15 +1023,14 @@ border-radius: 7;
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 241);
+background-color: #99CCFF;
 border-color: blue;
 border-width: 0px;
 border-style: solid;
-border-radius: 7;
-</string>
+border-radius: 7;</string>
    </property>
    <property name="text">
-    <string>20</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -1050,15 +1047,60 @@ border-radius: 7;
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 241);
+background-color: #99CCFF;
 border-color: blue;
 border-width: 0px;
 border-style: solid;
-border-radius: 7;
+border-radius: 7;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelChosenPort">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>10</y>
+     <width>200</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(153, 153, 153);
+selection-color: white;
+selection-background-color: rgb(191, 31, 127);
+border: 2px;
+border-radius: 10px;
+padding: 2px 4px;
+
 </string>
    </property>
    <property name="text">
-    <string>20</string>
+    <string>Wybrany port</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelShowChoosenPort">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>55</y>
+     <width>200</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #99CCFF;</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

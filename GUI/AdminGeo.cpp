@@ -1,5 +1,8 @@
 #include "AdminGeo.h"
 #include "ui_AdminGeo.h"
+#include "AuxClass/SQLConnect.h"
+#include <QSqlQuery>
+#include <QDebug>
 
 /*
  * includujemy naszego parent.h
@@ -23,11 +26,26 @@ AdminGeo::~AdminGeo()
     delete ui;
 }
 
+double * AdminGeo::getGeoCoordinates(QString cityName){
+    SQLConnect::ConnectToDB();
+    QSqlQuery query;
+    query.prepare("SELECT Latitude, Longitude FROM SafeHarbour.GeoCoordinate WHERE name = (?)");
+    query.bindValue(0, cityName);
+    query.exec();
+    query.first();
+    static double geoArray[2];
+    geoArray[0] = query.value(0).toDouble();
+    geoArray[1] = query.value(1).toDouble();
+    SQLConnect::DisconnectDB();
+    return geoArray;
+}
 
-void AdminGeo::on_pushButtonShanghai_clicked()
-{
-    QString shanghai = "Shanghai";
+void AdminGeo::connectGeoNameSS(QString cityName){
+    connect(this, SIGNAL(sendGeoLocationName(QString)), parent(),SLOT(receiveGeoLocationName(QString)));
+    emit sendGeoLocationName(cityName);
+}
 
+void AdminGeo::connectGeoSS(QString cityName, double latitude, double longitude){
     /*
      * connect(
      *  obiekt z ktorego cos wysyłamy,
@@ -48,9 +66,69 @@ void AdminGeo::on_pushButtonShanghai_clicked()
      * Mozliwe ze this->parent() nie jest potrzebne, pewnie samo parent() wystarczy
      *
      * */
+    connect(this, SIGNAL(sendGeoLocation(QString, double, double)),this->parent(), SLOT(receiveGeoLocation(QString,double, double)));
+    emit sendGeoLocation(cityName, latitude,longitude);
+}
 
-
-    connect(this, SIGNAL(sendGeoLocation(QString)),this->parent(), SLOT(receiveGeoLocation(QString)));
-    emit sendGeoLocation(shanghai);
+void AdminGeo::on_pushButtonShanghai_clicked()
+{
+    QString cityName = "Shanghai";
+    connectGeoNameSS(cityName);
+    double * geoPointer = getGeoCoordinates(cityName);
+    cityName = "Szanghaj";
+    connectGeoSS(cityName, *geoPointer,*(geoPointer + 1));
     this->close();
 }
+
+void AdminGeo::on_pushButtonSingapore_clicked()
+{
+    QString cityName = "Singapore";
+    connectGeoNameSS(cityName);
+    double * geoPointer = getGeoCoordinates(cityName);
+    cityName = "Singapur"; // Polish Name
+    connectGeoSS(cityName, *geoPointer,*(geoPointer + 1));
+    this->close();
+}
+
+void AdminGeo::on_pushButtonBoston_clicked()
+{
+    QString cityName = "Boston";
+    connectGeoNameSS(cityName);
+    double * geoPointer = getGeoCoordinates(cityName);
+    cityName = "Boston"; // Polish Name
+    connectGeoSS(cityName, *geoPointer,*(geoPointer + 1));
+    this->close();
+}
+
+void AdminGeo::on_pushButtonRotterdam_clicked()
+{
+    QString cityName = "Rotterdam";
+    connectGeoNameSS(cityName);
+    double * geoPointer = getGeoCoordinates(cityName);
+    cityName = "Roterdam"; // Polish Name
+    connectGeoSS(cityName, *geoPointer,*(geoPointer + 1));
+    this->close();
+}
+
+void AdminGeo::on_pushButtonSydney_clicked()
+{
+    QString cityName = "Sydney";
+    connectGeoNameSS(cityName);
+    double * geoPointer = getGeoCoordinates(cityName);
+    cityName = "Sydney"; // Polish Name
+    connectGeoSS(cityName, *geoPointer,*(geoPointer + 1));
+    this->close();
+}
+
+void AdminGeo::on_pushButtonHouston_clicked()
+{
+    QString cityName = "Houston";
+    connectGeoNameSS(cityName);
+    double * geoPointer = getGeoCoordinates(cityName);
+    cityName = "Houston"; // Polish Name
+    connectGeoSS(cityName, *geoPointer,*(geoPointer + 1));
+    this->close();
+}
+
+
+
