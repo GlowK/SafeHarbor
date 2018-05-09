@@ -66,18 +66,33 @@ void AdminAddHarbour::on_pushSave_clicked()
 void AdminAddHarbour::addPortToDatabase(Port tempPort){
 
     SQLConnect::ConnectToDB();
-    QSqlQuery query;
-    query.prepare("INSERT INTO SafeHarbour.Port (Name, Owner, GeoLatitude, GeoLongitude, NumberOfTugboats, PointerAnchorage, PointerCorridor, PointerDock, warehouseCap) VALUES (:Name, :Owner, :GeoLatitude, :GeoLongitude, :NumberOfTugboats, :PointerAnchorage, :PointerCorridor, :PointerDock, :warehouseCap);");
-    query.bindValue(":Name", tempPort.name);
-    query.bindValue(":Owner", tempPort.owner);
-    query.bindValue(":GeoLatitude", tempPort.location.geoLatitude);
-    query.bindValue(":GeoLongitude", tempPort.location.geoLongitude);
-    query.bindValue(":NumberOfTugboats", tempPort.numberOfTugboats);
-    query.bindValue(":PointerAnchorage", tempPort.anchorage);
-    query.bindValue(":PointerCorridor", tempPort.corridor);
-    query.bindValue(":PointerDock", tempPort.dock);
-    query.bindValue(":warehouseCap", tempPort.warehouseCapacity);
-    query.exec();
-    query.first();
+
+    QSqlQuery queryAddAnchorage;
+    queryAddAnchorage.prepare("INSERT INTO SafeHarbour.Anchorage (Capacity, MaxDraft, CostPerHour) VALUES (:Capacity, :MaxDraft, :CostPerHour);");
+    queryAddAnchorage.bindValue(":Capacity", 0);
+    queryAddAnchorage.bindValue(":MaxDraft", 0);
+    queryAddAnchorage.bindValue(":CostPerHour", 0);
+    queryAddAnchorage.exec();
+    queryAddAnchorage.first();
+
+    // Logika - Jak tworze Kotwicowisko, to ID bedzie najwieksze, i to najwieksze ID przypne za moment do nowo stworzonego Portu
+
+    queryAddAnchorage.prepare("SELECT max(idAnchorage) from Anchorage");
+    queryAddAnchorage.exec();
+    queryAddAnchorage.first();
+    tempPort.anchorage = queryAddAnchorage.value(0).toInt();
+
+    queryAddAnchorage.prepare("INSERT INTO SafeHarbour.Port (Name, Owner, GeoLatitude, GeoLongitude, NumberOfTugboats, PointerAnchorage, PointerCorridor, PointerDock, warehouseCap) VALUES (:Name, :Owner, :GeoLatitude, :GeoLongitude, :NumberOfTugboats, :PointerAnchorage, :PointerCorridor, :PointerDock, :warehouseCap);");
+    queryAddAnchorage.bindValue(":Name", tempPort.name);
+    queryAddAnchorage.bindValue(":Owner", tempPort.owner);
+    queryAddAnchorage.bindValue(":GeoLatitude", tempPort.location.geoLatitude);
+    queryAddAnchorage.bindValue(":GeoLongitude", tempPort.location.geoLongitude);
+    queryAddAnchorage.bindValue(":NumberOfTugboats", tempPort.numberOfTugboats);
+    queryAddAnchorage.bindValue(":PointerAnchorage", tempPort.anchorage);
+    queryAddAnchorage.bindValue(":PointerCorridor", tempPort.corridor);
+    queryAddAnchorage.bindValue(":PointerDock", tempPort.dock);
+    queryAddAnchorage.bindValue(":warehouseCap", tempPort.warehouseCapacity);
+    queryAddAnchorage.exec();
+    queryAddAnchorage.first();
     SQLConnect::DisconnectDB();
 }
