@@ -2,6 +2,7 @@
 #define PORT_H
 #include <QString>
 #include "GeoCoordinate.h"
+#include "Anchorage.h"
 
 
 class Port
@@ -11,7 +12,8 @@ public:
     QString owner; // ToDo - User Class in future :)
     GeoCoordinate location;
     int numberOfTugboats;
-    int anchorage; // ToDo - Real pointers to AnchorageClass object... CorridorClass object... DockClass object
+    int pAnchorage; // ToDo - Real pointers to AnchorageClass object... CorridorClass object... DockClass object
+    Anchorage anchorage;
     int corridor;
     int dock;
     int warehouseCapacity;

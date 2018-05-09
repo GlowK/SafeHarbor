@@ -80,7 +80,7 @@ void AdminAddHarbour::addPortToDatabase(Port tempPort){
     queryAddAnchorage.prepare("SELECT max(idAnchorage) from Anchorage");
     queryAddAnchorage.exec();
     queryAddAnchorage.first();
-    tempPort.anchorage = queryAddAnchorage.value(0).toInt();
+    tempPort.pAnchorage = queryAddAnchorage.value(0).toInt();
 
     queryAddAnchorage.prepare("INSERT INTO SafeHarbour.Port (Name, Owner, GeoLatitude, GeoLongitude, NumberOfTugboats, PointerAnchorage, PointerCorridor, PointerDock, warehouseCap) VALUES (:Name, :Owner, :GeoLatitude, :GeoLongitude, :NumberOfTugboats, :PointerAnchorage, :PointerCorridor, :PointerDock, :warehouseCap);");
     queryAddAnchorage.bindValue(":Name", tempPort.name);
@@ -88,7 +88,7 @@ void AdminAddHarbour::addPortToDatabase(Port tempPort){
     queryAddAnchorage.bindValue(":GeoLatitude", tempPort.location.geoLatitude);
     queryAddAnchorage.bindValue(":GeoLongitude", tempPort.location.geoLongitude);
     queryAddAnchorage.bindValue(":NumberOfTugboats", tempPort.numberOfTugboats);
-    queryAddAnchorage.bindValue(":PointerAnchorage", tempPort.anchorage);
+    queryAddAnchorage.bindValue(":PointerAnchorage", tempPort.pAnchorage);
     queryAddAnchorage.bindValue(":PointerCorridor", tempPort.corridor);
     queryAddAnchorage.bindValue(":PointerDock", tempPort.dock);
     queryAddAnchorage.bindValue(":warehouseCap", tempPort.warehouseCapacity);
