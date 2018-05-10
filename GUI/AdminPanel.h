@@ -46,10 +46,22 @@ private slots:
 
     void on_pushMinusTugboat_clicked();
 
+    void on_pushPlusCorridor_clicked();
+
+    void on_pushMinusCorridor_clicked();
+
 private:
     Ui::AdminPanel *ui;
     void populateComboBox();
     void populatePortInformation(QString);
+    void populatePortBaseInf(QString);
+    void populatePortAnchorageInf(int);
+    void populatePortCorridorInf(int);
+    void populatePortDockInf(int);
+    void checkIfPortChosen(QString);
+    void updatePortShowLabels();
+
+
 };
 
 #endif // ADMINPANEL_H

@@ -77,22 +77,47 @@ void AdminAddHarbour::addPortToDatabase(Port tempPort){
 
     // Logika - Jak tworze Kotwicowisko, to ID bedzie najwieksze, i to najwieksze ID przypne za moment do nowo stworzonego Portu
 
-    queryAddAnchorage.prepare("SELECT max(idAnchorage) from Anchorage");
+    queryAddAnchorage.prepare("SELECT max(idAnchorage) from Anchorage;");
     queryAddAnchorage.exec();
     queryAddAnchorage.first();
     tempPort.pAnchorage = queryAddAnchorage.value(0).toInt();
 
-    queryAddAnchorage.prepare("INSERT INTO SafeHarbour.Port (Name, Owner, GeoLatitude, GeoLongitude, NumberOfTugboats, PointerAnchorage, PointerCorridor, PointerDock, warehouseCap) VALUES (:Name, :Owner, :GeoLatitude, :GeoLongitude, :NumberOfTugboats, :PointerAnchorage, :PointerCorridor, :PointerDock, :warehouseCap);");
-    queryAddAnchorage.bindValue(":Name", tempPort.name);
-    queryAddAnchorage.bindValue(":Owner", tempPort.owner);
-    queryAddAnchorage.bindValue(":GeoLatitude", tempPort.location.geoLatitude);
-    queryAddAnchorage.bindValue(":GeoLongitude", tempPort.location.geoLongitude);
-    queryAddAnchorage.bindValue(":NumberOfTugboats", tempPort.numberOfTugboats);
-    queryAddAnchorage.bindValue(":PointerAnchorage", tempPort.pAnchorage);
-    queryAddAnchorage.bindValue(":PointerCorridor", tempPort.corridor);
-    queryAddAnchorage.bindValue(":PointerDock", tempPort.dock);
-    queryAddAnchorage.bindValue(":warehouseCap", tempPort.warehouseCapacity);
-    queryAddAnchorage.exec();
-    queryAddAnchorage.first();
+    QSqlQuery queryAddTransportCorridor;
+    queryAddTransportCorridor.prepare("INSERT INTO SafeHarbour.TransportCorridor (MaxSpeed) VALUES (:MaxSpeed);");
+    queryAddTransportCorridor.bindValue(":MaxSpeed", 1);
+    queryAddTransportCorridor.exec();
+    queryAddTransportCorridor.first();
+
+    queryAddTransportCorridor.prepare("SELECT max(idTransportCorridor) from TransportCorridor;");
+    queryAddTransportCorridor.exec();
+    queryAddTransportCorridor.first();
+    tempPort.pCorridor = queryAddTransportCorridor.value(0).toInt();
+
+    QSqlQuery queryAddDock;
+    queryAddDock.prepare("INSERT INTO SafeHarbour.Dock (MaxDraft) VALUES (:Capacity);");
+    queryAddDock.bindValue(":Capacity", 1);
+    queryAddDock.exec();
+    queryAddDock.first();
+
+    queryAddDock.prepare("SELECT max(idDock) from Dock;");
+    queryAddDock.exec();
+    queryAddDock.first();
+    tempPort.pDock = queryAddDock.value(0).toInt();
+
+    QSqlQuery queryAddPort;
+    queryAddPort.prepare("INSERT INTO SafeHarbour.Port (Name, Owner, GeoLatitude, GeoLongitude, NumberOfTugboats, NumberOfCorridors, NumberOfDocks, PointerAnchorage, PointerCorridor, PointerDock, warehouseCap) VALUES (:Name, :Owner, :GeoLatitude, :GeoLongitude, :NumberOfTugboats, :NumberOfCorridors, :NumberOfDocks, :PointerAnchorage, :PointerCorridor, :PointerDock, :warehouseCap);");
+    queryAddPort.bindValue(":Name", tempPort.name);
+    queryAddPort.bindValue(":Owner", tempPort.owner);
+    queryAddPort.bindValue(":GeoLatitude", tempPort.location.geoLatitude);
+    queryAddPort.bindValue(":GeoLongitude", tempPort.location.geoLongitude);
+    queryAddPort.bindValue(":NumberOfTugboats", tempPort.numberOfTugboats);
+    queryAddPort.bindValue(":NumberOfCorridors", tempPort.numberOfCorridors);
+    queryAddPort.bindValue(":NumberOfDocks", tempPort.numberOfDocks);
+    queryAddPort.bindValue(":PointerAnchorage", tempPort.pAnchorage);
+    queryAddPort.bindValue(":PointerCorridor", tempPort.pCorridor);
+    queryAddPort.bindValue(":PointerDock", tempPort.pDock);
+    queryAddPort.bindValue(":warehouseCap", tempPort.warehouseCapacity);
+    queryAddPort.exec();
+    queryAddPort.first();
     SQLConnect::DisconnectDB();
 }

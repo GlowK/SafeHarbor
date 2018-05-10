@@ -39,35 +39,12 @@ void AdminPanel::populateComboBox(){
 void AdminPanel::populatePortInformation(QString nameOfChosenPort){
     SQLConnect::ConnectToDB();
 
-    /*
-     * ToDo - Refaktoring i rozbicie tego cholerstwa na kilka mniejsyzch funkcji
-     * */
-    QSqlQuery query;
-    query.prepare("SELECT * FROM SafeHarbour.Port WHERE name = (:nameOfChosenPort)");
-    query.bindValue(":nameOfChosenPort", nameOfChosenPort);
-    query.exec();
-    query.first();
-    tempPort.name = query.value(1).toString();
-    tempPort.location.geoLatitude = query.value(3).toDouble();
-    tempPort.location.geoLongitude = query.value(4).toDouble();
-    tempPort.numberOfTugboats = query.value(5).toInt();
-    tempPort.pAnchorage = query.value(6).toInt();
-    tempPort.corridor = query.value(7).toInt();
-    tempPort.dock = query.value(8).toInt();
-    tempPort.warehouseCapacity = query.value(9).toInt();
-
-    query.prepare("SELECT Capacity, MaxDraft, CostPerHour FROM SafeHarbour.Anchorage WHERE idAnchorage = (:pAnchorage)");
-    query.bindValue(":pAnchorage", tempPort.pAnchorage);
-    query.exec();
-    query.first();
-    tempPort.anchorage.capacity = query.value(0).toInt();
-    tempPort.anchorage.maxDraft = query.value(1).toDouble();
-    tempPort.anchorage.costPerHour = query.value(2).toDouble();
-    tempPort.toString();
-
-    ui->labelShowAnchorageCopacity->setNum(tempPort.anchorage.capacity);
-    ui->labelShowTugboatCount->setNum(tempPort.numberOfTugboats);
-
+    populatePortBaseInf(nameOfChosenPort);
+    populatePortAnchorageInf(tempPort.pAnchorage);
+    populatePortCorridorInf(tempPort.pCorridor);
+    populatePortDockInf(tempPort.pDock);
+    //tempPort.toString();
+    updatePortShowLabels();
     populateComboBox();
     SQLConnect::DisconnectDB();
 }
@@ -127,17 +104,9 @@ void AdminPanel::on_comboBox_currentIndexChanged(const QString &arg1)
 
 void AdminPanel::on_pushAcceptPort_clicked()
 {
-    /*
-     * ToDo - Dodać wyjatek, zeby pobieral jakas wartosc z comboBoxa nawet gdy sie nie klikalo na comboBox wczesniej
-     *          na przyklad pierwsza wartosc z SELECT Name FROM SafeHarbour.Port ORDER BY Name ASC bo to zawsze jest
-     *          pierwsza wartosc pokazywana w ComboBoxie jak sie na niego nie klika.
-     * */
-
+    checkIfPortChosen(chosenPort);
     /*
      * ToDo:
-     * a) Przywolanie obiektu port
-     * b) Ustawienie Anchorage
-     * c) Ustawienie Corridor
      * d) Ustawienie Dock
      * e) Ustawienie Magazynów
      * */
@@ -163,7 +132,7 @@ void AdminPanel::on_pushMinusAnchorage_clicked()
      * */
     if(chosenPort != "temp"){
         tempPort.anchorage.capacity--;
-        if(tempPort.anchorage.capacity<0){
+        if(tempPort.anchorage.capacity <0){
             tempPort.anchorage.capacity = 0;
         }
         ui->labelShowAnchorageCopacity->setNum(tempPort.anchorage.capacity);
@@ -188,9 +157,118 @@ void AdminPanel::on_pushMinusTugboat_clicked()
      * */
     if(chosenPort != "temp"){
         tempPort.numberOfTugboats--;
-        if(tempPort.anchorage.capacity<0){
-            tempPort.anchorage.capacity = 0;
+        if(tempPort.numberOfTugboats <0){
+            tempPort.numberOfTugboats = 0;
         }
         ui->labelShowTugboatCount->setNum(tempPort.numberOfTugboats);
     }
+}
+
+void AdminPanel::on_pushPlusCorridor_clicked()
+{
+    /*
+     * ToDo: Upgrade this if statement
+     * */
+    if(chosenPort != "temp"){
+        tempPort.numberOfCorridors++;
+        ui->labelShowCorridorCount->setNum(tempPort.numberOfCorridors);
+    }
+}
+
+void AdminPanel::on_pushMinusCorridor_clicked()
+{
+    /*
+     * ToDo: Upgrade this if statement
+     * */
+    if(chosenPort != "temp"){
+        tempPort.numberOfCorridors--;
+        if(tempPort.numberOfCorridors <0){
+            tempPort.numberOfCorridors = 0;
+        }
+        ui->labelShowCorridorCount->setNum(tempPort.numberOfCorridors);
+    }
+}
+
+void AdminPanel::checkIfPortChosen(QString chosenPort){
+
+    if(chosenPort == "temp"){
+        SQLConnect::ConnectToDB();
+        QSqlQuery query;
+        query.prepare("SELECT Name FROM SafeHarbour.Port ORDER BY Name ASC LIMIT 1");
+        query.exec();
+        query.first();
+        if(query.value(0).toString() != ""){
+           this->chosenPort = query.value(0).toString();
+        }
+        SQLConnect::DisconnectDB();
+    }
+}
+
+void AdminPanel::updatePortShowLabels(){
+
+    // ToDo - add Manager and Client
+    ui->labelShowAnchorageCopacity->setNum(tempPort.anchorage.capacity);
+    ui->labelShowTugboatCount->setNum(tempPort.numberOfTugboats);
+    ui->labelShowCorridorCount->setNum(tempPort.numberOfCorridors);
+    ui->labelShowDockCount->setNum(tempPort.numberOfDocks);
+}
+
+void AdminPanel::populatePortBaseInf(QString nameOfChosenPort){
+
+    QSqlQuery query;
+    query.prepare("SELECT * FROM SafeHarbour.Port WHERE name = (:nameOfChosenPort)");
+    query.bindValue(":nameOfChosenPort", nameOfChosenPort);
+    query.exec();
+    query.first();
+    tempPort.name = query.value(1).toString();
+    tempPort.owner = query.value(2).toString();
+    tempPort.location.geoLatitude = query.value(3).toDouble();
+    tempPort.location.geoLongitude = query.value(4).toDouble();
+    tempPort.numberOfTugboats = query.value(5).toInt();
+    tempPort.numberOfCorridors = query.value(6).toInt();
+    tempPort.numberOfDocks = query.value(7).toInt();
+    tempPort.pAnchorage = query.value(8).toInt();
+    tempPort.pCorridor = query.value(9).toInt();
+    tempPort.pDock = query.value(10).toInt();
+    tempPort.warehouseCapacity = query.value(11).toInt();
+}
+
+void AdminPanel::populatePortAnchorageInf(int pAnchorage){
+
+    QSqlQuery query;
+    query.prepare("SELECT Capacity, MaxDraft, CostPerHour FROM SafeHarbour.Anchorage WHERE idAnchorage = (:pAnchorage)");
+    query.bindValue(":pAnchorage", pAnchorage);
+    query.exec();
+    query.first();
+    tempPort.anchorage.capacity = query.value(0).toInt();
+    tempPort.anchorage.maxDraft = query.value(1).toDouble();
+    tempPort.anchorage.costPerHour = query.value(2).toDouble();
+}
+
+void AdminPanel::populatePortCorridorInf(int pCorridor){
+
+    QSqlQuery query;
+    query.prepare("SELECT MaxSpeed, MaxWidth, MaxDraft, CostPerHour, CapPerCorridor FROM SafeHarbour.TransportCorridor WHERE idTransportCorridor = (:pCorridor)");
+    query.bindValue(":pCorridor", pCorridor);
+    query.exec();
+    query.first();
+    tempPort.transportCorridor.maxSpeed = query.value(0).toInt();
+    tempPort.transportCorridor.maxWidth = query.value(1).toDouble();
+    tempPort.transportCorridor.maxDraft = query.value(2).toDouble();
+    tempPort.transportCorridor.costPerHour = query.value(3).toDouble();
+    tempPort.transportCorridor.capacityPerCorridor = query.value(4).toInt();
+}
+
+void AdminPanel::populatePortDockInf(int pDock){
+
+    QSqlQuery query;
+    query.prepare("SELECT MaxDraft, ContainersPerHour, PassengersPerHour, CostPerHour, Capacity FROM SafeHarbour.Dock WHERE idDock = (:pDock)");
+    query.bindValue(":pDock", pDock);
+    query.exec();
+    query.first();
+    tempPort.dock.maxDraft = query.value(0).toInt();
+    tempPort.dock.containerPerHour = query.value(1).toDouble();
+    tempPort.dock.passengersPerHour = query.value(2).toDouble();
+    tempPort.dock.costPerHour = query.value(3).toDouble();
+    tempPort.dock.capacity = query.value(4).toInt();
 }

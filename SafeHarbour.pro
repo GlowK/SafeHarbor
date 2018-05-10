@@ -41,7 +41,9 @@ SOURCES += \
     AuxClass/SQLConnect.cpp \
     MainClass/Port.cpp \
     MainClass/GeoCoordinate.cpp \
-    MainClass/Anchorage.cpp
+    MainClass/Anchorage.cpp \
+    MainClass/TransportCorridor.cpp \
+    MainClass/Dock.cpp
 
 HEADERS += \
     GUI/AdminAddClient.h \
@@ -60,7 +62,9 @@ HEADERS += \
     AuxClass/SQLConnect.h \
     MainClass/Port.h \
     MainClass/GeoCoordinate.h \
-    MainClass/Anchorage.h
+    MainClass/Anchorage.h \
+    MainClass/TransportCorridor.h \
+    MainClass/Dock.h
 
 FORMS += \
     GUI/AdminAddClient.ui \
