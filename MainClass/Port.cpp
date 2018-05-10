@@ -8,7 +8,7 @@ Port::Port(QString name, QString owner, GeoCoordinate location)
     this->location = location;
     numberOfTugboats = 0;
     pAnchorage = 0;
-    corridor = 0;
+    pCorridor = 0;
     dock = 0;
     warehouseCapacity = 0;
 
@@ -19,10 +19,12 @@ Port::Port()
     name = "temp";
     owner = "temp";
     numberOfTugboats = 0;
+    numberOfCorridors = 0;
     pAnchorage = 0;
-    corridor = 0;
+    pCorridor = 0;
     dock = 0;
     warehouseCapacity = 0;
+
 }
 
 void Port::setName(const QString &value)
@@ -49,5 +51,11 @@ void Port::toString(){
     qDebug() << "anchorageCapacity = " << this->anchorage.capacity;
     qDebug() << "anchorageMaxDraft = " << this->anchorage.maxDraft;
     qDebug() << "warehouseCostPerHour = " << this->anchorage.capacity;
+    qDebug() << "Coridor MaxSpeed = " << this->transportCorridor.maxSpeed;
+    qDebug() << "Coridor MaxWidth = " << this->transportCorridor.maxWidth;
+    qDebug() << "Coridor MaxDraft = " << this->transportCorridor.maxDraft;
+    qDebug() << "Coridor CostPerHour = " << this->transportCorridor.costPerHour;
+    qDebug() << "Coridor CapPerCorridor = " << this->transportCorridor.capacityPerCorridor;
+
 
 }
