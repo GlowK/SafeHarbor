@@ -4,6 +4,7 @@
 #include "GeoCoordinate.h"
 #include "Anchorage.h"
 #include "TransportCorridor.h"
+#include "Dock.h"
 
 class Port
 {
@@ -20,7 +21,10 @@ public:
     int numberOfCorridors;
     TransportCorridor transportCorridor;
 
-    int dock;
+    int pDock;
+    int numberOfDocks;
+    Dock dock;
+
     int warehouseCapacity;
 
 public:

@@ -3,6 +3,7 @@
 #include "AuxClass/SQLConnect.h"
 #include <QSqlQuery>
 #include <QDebug>
+#include <QSqlError>
 
 /*
  * includujemy naszego parent.h
@@ -19,6 +20,8 @@ AdminGeo::AdminGeo(AdminAddHarbour *parent) :
     ui(new Ui::AdminGeo)
 {
     ui->setupUi(this);
+    QString cityNameTable[NUMBER_OF_CITIES] = {"Shanghai","Singapore", "Boston", "Rotterdam", "Sydney","Houston" };
+    checkButtonsVisibilitie(cityNameTable);
 }
 
 AdminGeo::~AdminGeo()
@@ -130,5 +133,57 @@ void AdminGeo::on_pushButtonHouston_clicked()
     this->close();
 }
 
+int AdminGeo::isCreated(QString cityName){
 
+    /*
+     * ToDo:    Ta funkcja generuje błedy:
+     *          QSqlQuery::Value not positioned on a valid record
+     *          przydałobysię wymyslic jakiś mądrzejszy sposob sprawdznia czy wyświetlić przycisk
+     * */
 
+    QSqlQuery query;
+    query.prepare("SELECT idPort from Port where Name = (?)");
+    query.bindValue(0, cityName);
+    query.exec();
+    query.first();
+    if(query.value(0).toString() == ""){
+        return 0;
+    }else{
+        return 1;
+    }
+}
+
+void AdminGeo::isButtonVisible(QString cityName, int j){
+    if(isCreated(cityName)){
+        switch (j) {
+        case 0:
+            ui->pushButtonShanghai->setVisible(false);
+            break;
+        case 1:
+            ui->pushButtonSingapore->setVisible(false);
+            break;
+        case 2:
+            ui->pushButtonBoston->setVisible(false);
+            break;
+        case 3:
+            ui->pushButtonRotterdam->setVisible(false);
+            break;
+        case 4:
+            ui->pushButtonSydney->setVisible(false);
+            break;
+        case 5:
+            ui->pushButtonHouston->setVisible(false);
+            break;
+        default:
+            break;
+        }
+    }
+}
+
+void AdminGeo::checkButtonsVisibilitie(QString arr[]){
+    SQLConnect::ConnectToDB();
+    for(int i = 0; i < NUMBER_OF_CITIES; i++){
+        isButtonVisible(arr[i], i);
+    }
+    SQLConnect::DisconnectDB();
+}

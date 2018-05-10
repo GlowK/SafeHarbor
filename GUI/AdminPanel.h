@@ -57,6 +57,7 @@ private:
     void populatePortBaseInf(QString);
     void populatePortAnchorageInf(int);
     void populatePortCorridorInf(int);
+    void populatePortDockInf(int);
     void checkIfPortChosen(QString);
     void updatePortShowLabels();
 

@@ -42,6 +42,7 @@ void AdminPanel::populatePortInformation(QString nameOfChosenPort){
     populatePortBaseInf(nameOfChosenPort);
     populatePortAnchorageInf(tempPort.pAnchorage);
     populatePortCorridorInf(tempPort.pCorridor);
+    populatePortDockInf(tempPort.pDock);
     //tempPort.toString();
     updatePortShowLabels();
     populateComboBox();
@@ -205,11 +206,11 @@ void AdminPanel::checkIfPortChosen(QString chosenPort){
 
 void AdminPanel::updatePortShowLabels(){
 
-    // ToDo - add Docks information
     // ToDo - add Manager and Client
     ui->labelShowAnchorageCopacity->setNum(tempPort.anchorage.capacity);
     ui->labelShowTugboatCount->setNum(tempPort.numberOfTugboats);
     ui->labelShowCorridorCount->setNum(tempPort.numberOfCorridors);
+    ui->labelShowDockCount->setNum(tempPort.numberOfDocks);
 }
 
 void AdminPanel::populatePortBaseInf(QString nameOfChosenPort){
@@ -225,10 +226,11 @@ void AdminPanel::populatePortBaseInf(QString nameOfChosenPort){
     tempPort.location.geoLongitude = query.value(4).toDouble();
     tempPort.numberOfTugboats = query.value(5).toInt();
     tempPort.numberOfCorridors = query.value(6).toInt();
-    tempPort.pAnchorage = query.value(7).toInt();
-    tempPort.pCorridor = query.value(8).toInt();
-    tempPort.dock = query.value(9).toInt();
-    tempPort.warehouseCapacity = query.value(10).toInt();
+    tempPort.numberOfDocks = query.value(7).toInt();
+    tempPort.pAnchorage = query.value(8).toInt();
+    tempPort.pCorridor = query.value(9).toInt();
+    tempPort.pDock = query.value(10).toInt();
+    tempPort.warehouseCapacity = query.value(11).toInt();
 }
 
 void AdminPanel::populatePortAnchorageInf(int pAnchorage){
@@ -255,4 +257,18 @@ void AdminPanel::populatePortCorridorInf(int pCorridor){
     tempPort.transportCorridor.maxDraft = query.value(2).toDouble();
     tempPort.transportCorridor.costPerHour = query.value(3).toDouble();
     tempPort.transportCorridor.capacityPerCorridor = query.value(4).toInt();
+}
+
+void AdminPanel::populatePortDockInf(int pDock){
+
+    QSqlQuery query;
+    query.prepare("SELECT MaxDraft, ContainersPerHour, PassengersPerHour, CostPerHour, Capacity FROM SafeHarbour.Dock WHERE idDock = (:pDock)");
+    query.bindValue(":pDock", pDock);
+    query.exec();
+    query.first();
+    tempPort.dock.maxDraft = query.value(0).toInt();
+    tempPort.dock.containerPerHour = query.value(1).toDouble();
+    tempPort.dock.passengersPerHour = query.value(2).toDouble();
+    tempPort.dock.costPerHour = query.value(3).toDouble();
+    tempPort.dock.capacity = query.value(4).toInt();
 }

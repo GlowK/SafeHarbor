@@ -93,17 +93,29 @@ void AdminAddHarbour::addPortToDatabase(Port tempPort){
     queryAddTransportCorridor.first();
     tempPort.pCorridor = queryAddTransportCorridor.value(0).toInt();
 
+    QSqlQuery queryAddDock;
+    queryAddDock.prepare("INSERT INTO SafeHarbour.Dock (MaxDraft) VALUES (:Capacity);");
+    queryAddDock.bindValue(":Capacity", 1);
+    queryAddDock.exec();
+    queryAddDock.first();
+
+    queryAddDock.prepare("SELECT max(idDock) from Dock;");
+    queryAddDock.exec();
+    queryAddDock.first();
+    tempPort.pDock = queryAddDock.value(0).toInt();
+
     QSqlQuery queryAddPort;
-    queryAddPort.prepare("INSERT INTO SafeHarbour.Port (Name, Owner, GeoLatitude, GeoLongitude, NumberOfTugboats, NumberOfCorridors, PointerAnchorage, PointerCorridor, PointerDock, warehouseCap) VALUES (:Name, :Owner, :GeoLatitude, :GeoLongitude, :NumberOfTugboats, :NumberOfCorridors, :PointerAnchorage, :PointerCorridor, :PointerDock, :warehouseCap);");
+    queryAddPort.prepare("INSERT INTO SafeHarbour.Port (Name, Owner, GeoLatitude, GeoLongitude, NumberOfTugboats, NumberOfCorridors, NumberOfDocks, PointerAnchorage, PointerCorridor, PointerDock, warehouseCap) VALUES (:Name, :Owner, :GeoLatitude, :GeoLongitude, :NumberOfTugboats, :NumberOfCorridors, :NumberOfDocks, :PointerAnchorage, :PointerCorridor, :PointerDock, :warehouseCap);");
     queryAddPort.bindValue(":Name", tempPort.name);
     queryAddPort.bindValue(":Owner", tempPort.owner);
     queryAddPort.bindValue(":GeoLatitude", tempPort.location.geoLatitude);
     queryAddPort.bindValue(":GeoLongitude", tempPort.location.geoLongitude);
     queryAddPort.bindValue(":NumberOfTugboats", tempPort.numberOfTugboats);
     queryAddPort.bindValue(":NumberOfCorridors", tempPort.numberOfCorridors);
+    queryAddPort.bindValue(":NumberOfDocks", tempPort.numberOfDocks);
     queryAddPort.bindValue(":PointerAnchorage", tempPort.pAnchorage);
     queryAddPort.bindValue(":PointerCorridor", tempPort.pCorridor);
-    queryAddPort.bindValue(":PointerDock", tempPort.dock);
+    queryAddPort.bindValue(":PointerDock", tempPort.pDock);
     queryAddPort.bindValue(":warehouseCap", tempPort.warehouseCapacity);
     queryAddPort.exec();
     queryAddPort.first();

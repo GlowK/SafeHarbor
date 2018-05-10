@@ -52,6 +52,13 @@ private:
     double * getGeoCoordinates(QString name);
     void connectGeoSS(QString cityName, double latitude, double longitude);
     void connectGeoNameSS(QString cityName);
+    int isCreated(QString cityName);
+    void isButtonVisible(QString cityName, int j);
+    void checkButtonsVisibilitie(QString arr[]);
+
+
+private:
+    const int NUMBER_OF_CITIES = 6;
 };
 
 #endif // ADMINGEO_H
