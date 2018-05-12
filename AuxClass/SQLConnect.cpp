@@ -18,4 +18,12 @@ void SQLConnect::ConnectToDB()
 void SQLConnect::DisconnectDB()
 {
     database.close();
+    database = QSqlDatabase();
+    database.removeDatabase(database.connectionName());
+}
+
+void SQLConnect::debugQuery(QSqlQuery query){
+    if(!query.exec()){
+        qDebug() << "SqLite error:" << query.lastError().text() << ", SqLite error code:" << query.lastError().number();
+    }
 }

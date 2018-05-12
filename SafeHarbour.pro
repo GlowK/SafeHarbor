@@ -43,7 +43,9 @@ SOURCES += \
     MainClass/GeoCoordinate.cpp \
     MainClass/Anchorage.cpp \
     MainClass/TransportCorridor.cpp \
-    MainClass/Dock.cpp
+    MainClass/Dock.cpp \
+    GUI/AdminGeoEdit.cpp \
+    GUI/AdminAnchorageDetails.cpp
 
 HEADERS += \
     GUI/AdminAddClient.h \
@@ -64,7 +66,9 @@ HEADERS += \
     MainClass/GeoCoordinate.h \
     MainClass/Anchorage.h \
     MainClass/TransportCorridor.h \
-    MainClass/Dock.h
+    MainClass/Dock.h \
+    GUI/AdminGeoEdit.h \
+    GUI/AdminAnchorageDetails.h
 
 FORMS += \
     GUI/AdminAddClient.ui \
@@ -78,7 +82,9 @@ FORMS += \
     GUI/AdminPanel.ui \
     GUI/ClientPanel.ui \
     GUI/LoginWindow.ui \
-    GUI/ManagerPanel.ui
+    GUI/ManagerPanel.ui \
+    GUI/AdminGeoEdit.ui \
+    GUI/AdminAnchorageDetails.ui
 
 RESOURCES += \
     gfx.qrc \

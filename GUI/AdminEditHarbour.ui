@@ -79,7 +79,7 @@ padding: 2px 4px;
     </rect>
    </property>
    <property name="text">
-    <string>Wprowadź nowego właściciela</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="labelGeo">
@@ -178,19 +178,6 @@ padding: 2px 4px;
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditName">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>60</y>
-     <width>200</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Wprowadź nową nazwę</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="labelName">
    <property name="geometry">
     <rect>
@@ -217,7 +204,7 @@ padding: 2px 4px;
     </rect>
    </property>
    <property name="text">
-    <string>Wprowadź nową pojemność</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="pushDeleteHarbour">
@@ -242,6 +229,25 @@ background-color: rgb(255, 255, 241);
    </property>
    <property name="text">
     <string>Usuń port</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelShowGeoName">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>60</y>
+     <width>200</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #99CCFF;</string>
+   </property>
+   <property name="text">
+    <string>Geolokalizacja</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>

@@ -31,7 +31,6 @@ public slots:
 
 private slots:
     void on_pushGeo_clicked();
-
     void on_pushSave_clicked();
 
 private:
