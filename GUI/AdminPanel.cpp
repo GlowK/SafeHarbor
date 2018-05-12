@@ -13,6 +13,7 @@
 #include <QSqlQueryModel>
 #include <QDebug>
 #include "AdminAnchorageDetails.h"
+#include "AdminCorridorDetails.h"
 
 
 AdminPanel::AdminPanel(QWidget *parent) :
@@ -35,6 +36,12 @@ void AdminPanel::receiveChosenPort(QString newPortName){
 
 void AdminPanel::receiveAnchorageDetails(Anchorage anchorageDetails){
     tempPort.anchorage = anchorageDetails;
+    updatePortShowLabels();
+}
+
+void AdminPanel::receiveCorridorDetails(TransportCorridor corridorDetails, int numberOfCorridos){
+    tempPort.transportCorridor = corridorDetails;
+    tempPort.numberOfCorridors = numberOfCorridos;
     updatePortShowLabels();
 }
 
@@ -79,6 +86,16 @@ void AdminPanel::on_pushEditAnchorage_clicked()
     }
 }
 
+void AdminPanel::on_pushEditCorridor_clicked()
+{
+    if(tempPort.name != "temp"){
+        AdminCorridorDetails adminCorridorDetails(this);
+        adminCorridorDetails.setModal(false);
+        connect(this,SIGNAL(sendCorridorData(TransportCorridor,int)),&adminCorridorDetails,SLOT(receiveCorridorData(TransportCorridor, int)));
+        emit sendCorridorData(tempPort.transportCorridor, tempPort.numberOfCorridors);
+        adminCorridorDetails.exec();
+    }
+}
 void AdminPanel::on_pushClientAdd_clicked()
 {
     AdminAddClient adminAddClient;
@@ -322,6 +339,8 @@ void AdminPanel::updatePortShowLabels(){
     ui->labelShowCorridorCount->setNum(tempPort.numberOfCorridors);
     ui->labelShowDockCount->setNum(tempPort.numberOfDocks);
 }
+
+
 
 
 

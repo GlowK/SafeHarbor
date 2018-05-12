@@ -22,10 +22,12 @@ public:
 signals:
     void sendDataToEdit(Port);
     void sendAnchorageData(Anchorage);
+    void sendCorridorData(TransportCorridor, int);
 
 public slots:
     void receiveChosenPort(QString);
     void receiveAnchorageDetails(Anchorage);
+    void receiveCorridorDetails(TransportCorridor, int);
 
 private slots:
     void on_pushCreateNewHarbour_clicked();
@@ -63,6 +65,8 @@ private slots:
     void on_pushMinusDock_clicked();
 
     void on_pushEditAnchorage_clicked();
+
+    void on_pushEditCorridor_clicked();
 
 private:
     Ui::AdminPanel *ui;
