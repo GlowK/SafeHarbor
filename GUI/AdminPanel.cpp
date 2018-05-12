@@ -12,6 +12,7 @@
 #include <QSqlQuery>
 #include <QSqlQueryModel>
 #include <QDebug>
+#include "AdminAnchorageDetails.h"
 
 
 AdminPanel::AdminPanel(QWidget *parent) :
@@ -28,6 +29,15 @@ AdminPanel::~AdminPanel()
     delete ui;
 }
 
+void AdminPanel::receiveChosenPort(QString newPortName){
+    chosenPort = newPortName;
+}
+
+void AdminPanel::receiveAnchorageDetails(Anchorage anchorageDetails){
+    tempPort.anchorage = anchorageDetails;
+    updatePortShowLabels();
+}
+
 void AdminPanel::populateComboBox(){
     SQLConnect::ConnectToDB();
     QSqlQueryModel *model = new QSqlQueryModel();
@@ -36,18 +46,6 @@ void AdminPanel::populateComboBox(){
     SQLConnect::DisconnectDB();
 }
 
-void AdminPanel::populatePortInformation(QString nameOfChosenPort){
-    SQLConnect::ConnectToDB();
-
-    populatePortBaseInf(nameOfChosenPort);
-    populatePortAnchorageInf(tempPort.pAnchorage);
-    populatePortCorridorInf(tempPort.pCorridor);
-    populatePortDockInf(tempPort.pDock);
-    //tempPort.toString();
-    updatePortShowLabels();
-    populateComboBox();
-    SQLConnect::DisconnectDB();
-}
 
 void AdminPanel::on_pushCreateNewHarbour_clicked()
 {
@@ -64,9 +62,20 @@ void AdminPanel::on_pushEditHarbour_clicked()
         adminEditHarbour.setModal(true);
         connect(this,SIGNAL(sendDataToEdit(Port)),&adminEditHarbour,SLOT(receiveDataToEdit(Port)));
         emit sendDataToEdit(tempPort);
-        tempPort.toString();
         adminEditHarbour.exec();
-        populateComboBox();
+        ui->labelShowChoosenPort->setText(this->chosenPort);
+        populatePortInformation(chosenPort);
+    }
+}
+
+void AdminPanel::on_pushEditAnchorage_clicked()
+{
+    if(tempPort.name != "temp"){
+        AdminAnchorageDetails adminAnchorageDetails(this);
+        adminAnchorageDetails.setModal(false);
+        connect(this,SIGNAL(sendAnchorageData(Anchorage)),&adminAnchorageDetails,SLOT(receiveAnchorageData(Anchorage)));
+        emit sendAnchorageData(tempPort.anchorage);
+        adminAnchorageDetails.exec();
     }
 }
 
@@ -111,11 +120,6 @@ void AdminPanel::on_comboBox_currentIndexChanged(const QString &arg1)
 void AdminPanel::on_pushAcceptPort_clicked()
 {
     checkIfPortChosen(chosenPort);
-    /*
-     * ToDo:
-     * d) Ustawienie Dock
-     * e) Ustawienie Magazynów
-     * */
     ui->labelShowChoosenPort->setText(this->chosenPort);
     populatePortInformation(chosenPort);
 }
@@ -145,31 +149,6 @@ void AdminPanel::on_pushMinusAnchorage_clicked()
     }
 }
 
-void AdminPanel::on_pushPlusTugboat_clicked()
-{
-    /*
-     * ToDo: Upgrade this if statement
-     * */
-    if(chosenPort != "temp"){
-        tempPort.numberOfTugboats++;
-        ui->labelShowTugboatCount->setNum(tempPort.numberOfTugboats);
-    }
-}
-
-void AdminPanel::on_pushMinusTugboat_clicked()
-{
-    /*
-     * ToDo: Upgrade this if statement
-     * */
-    if(chosenPort != "temp"){
-        tempPort.numberOfTugboats--;
-        if(tempPort.numberOfTugboats <0){
-            tempPort.numberOfTugboats = 0;
-        }
-        ui->labelShowTugboatCount->setNum(tempPort.numberOfTugboats);
-    }
-}
-
 void AdminPanel::on_pushPlusCorridor_clicked()
 {
     /*
@@ -195,6 +174,56 @@ void AdminPanel::on_pushMinusCorridor_clicked()
     }
 }
 
+void AdminPanel::on_pushPlusDock_clicked()
+{
+    /*
+     * ToDo: Upgrade this if statement
+     * */
+    if(chosenPort != "temp"){
+        tempPort.numberOfDocks++;
+        ui->labelShowDockCount->setNum(tempPort.numberOfDocks);
+    }
+}
+
+void AdminPanel::on_pushMinusDock_clicked()
+{
+    /*
+     * ToDo: Upgrade this if statement
+     * */
+    if(chosenPort != "temp"){
+        tempPort.numberOfDocks--;
+        if(tempPort.numberOfDocks <0){
+            tempPort.numberOfDocks = 0;
+        }
+        ui->labelShowDockCount->setNum(tempPort.numberOfDocks);
+    }
+}
+
+void AdminPanel::on_pushPlusTugboat_clicked()
+{
+    /*
+     * ToDo: Upgrade this if statement
+     * */
+    if(chosenPort != "temp"){
+        tempPort.numberOfTugboats++;
+        ui->labelShowTugboatCount->setNum(tempPort.numberOfTugboats);
+    }
+}
+
+void AdminPanel::on_pushMinusTugboat_clicked()
+{
+    /*
+     * ToDo: Upgrade this if statement
+     * */
+    if(chosenPort != "temp"){
+        tempPort.numberOfTugboats--;
+        if(tempPort.numberOfTugboats <0){
+            tempPort.numberOfTugboats = 0;
+        }
+        ui->labelShowTugboatCount->setNum(tempPort.numberOfTugboats);
+    }
+}
+
 void AdminPanel::checkIfPortChosen(QString chosenPort){
 
     if(chosenPort == "temp"){
@@ -210,13 +239,19 @@ void AdminPanel::checkIfPortChosen(QString chosenPort){
     }
 }
 
-void AdminPanel::updatePortShowLabels(){
 
-    // ToDo - add Manager and Client
-    ui->labelShowAnchorageCopacity->setNum(tempPort.anchorage.capacity);
-    ui->labelShowTugboatCount->setNum(tempPort.numberOfTugboats);
-    ui->labelShowCorridorCount->setNum(tempPort.numberOfCorridors);
-    ui->labelShowDockCount->setNum(tempPort.numberOfDocks);
+
+void AdminPanel::populatePortInformation(QString nameOfChosenPort){
+    SQLConnect::ConnectToDB();
+
+    populatePortBaseInf(nameOfChosenPort);
+    populatePortAnchorageInf(tempPort.pAnchorage);
+    populatePortCorridorInf(tempPort.pCorridor);
+    populatePortDockInf(tempPort.pDock);
+    //tempPort.toString();
+    updatePortShowLabels();
+    populateComboBox();
+    SQLConnect::DisconnectDB();
 }
 
 void AdminPanel::populatePortBaseInf(QString nameOfChosenPort){
@@ -278,3 +313,15 @@ void AdminPanel::populatePortDockInf(int pDock){
     tempPort.dock.costPerHour = query.value(3).toDouble();
     tempPort.dock.capacity = query.value(4).toInt();
 }
+
+void AdminPanel::updatePortShowLabels(){
+
+    // ToDo - add Manager and Client
+    ui->labelShowAnchorageCopacity->setNum(tempPort.anchorage.capacity);
+    ui->labelShowTugboatCount->setNum(tempPort.numberOfTugboats);
+    ui->labelShowCorridorCount->setNum(tempPort.numberOfCorridors);
+    ui->labelShowDockCount->setNum(tempPort.numberOfDocks);
+}
+
+
+

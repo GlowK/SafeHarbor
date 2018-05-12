@@ -339,7 +339,7 @@ padding: 2px 4px;
     <string>Stwórz nowy port</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushAnchorageEdit">
+  <widget class="QPushButton" name="pushEditAnchorage">
    <property name="geometry">
     <rect>
      <x>580</x>
@@ -352,7 +352,7 @@ padding: 2px 4px;
     <string>Edytuj szczegóły</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushCorridorEdit">
+  <widget class="QPushButton" name="pushEditCorridor">
    <property name="geometry">
     <rect>
      <x>580</x>
@@ -365,24 +365,11 @@ padding: 2px 4px;
     <string>Edytuj szczegóły</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushDockEdit">
+  <widget class="QPushButton" name="pushEditDock">
    <property name="geometry">
     <rect>
      <x>580</x>
      <y>270</y>
-     <width>200</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Edytuj szczegóły</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushTugboatEdit">
-   <property name="geometry">
-    <rect>
-     <x>580</x>
-     <y>320</y>
      <width>200</width>
      <height>30</height>
     </rect>

@@ -13,12 +13,16 @@ class AdminPanel;
 class AdminEditHarbour : public QDialog
 {
     Q_OBJECT
+    QString oldPortName;
 
 public:
     explicit AdminEditHarbour(AdminPanel *parent = 0);
     ~AdminEditHarbour();
 public:
     Port tempPort;
+
+signals:
+    void sendNewPortName(QString);
 
 public slots:
     void receiveGeoLocation(QString, double, double);
@@ -32,6 +36,8 @@ private slots:
 
 private:
     Ui::AdminEditHarbour *ui;
+    void editPortOnDatabase(QString);
+    void updateTempPort(QString, int);
 };
 
 #endif // ADMINEDITHARBOUR_H
