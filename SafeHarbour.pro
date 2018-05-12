@@ -46,7 +46,8 @@ SOURCES += \
     MainClass/Dock.cpp \
     GUI/AdminGeoEdit.cpp \
     GUI/AdminAnchorageDetails.cpp \
-    GUI/AdminCorridorDetails.cpp
+    GUI/AdminCorridorDetails.cpp \
+    GUI/AdminDockDetails.cpp
 
 HEADERS += \
     GUI/AdminAddClient.h \
@@ -70,7 +71,8 @@ HEADERS += \
     MainClass/Dock.h \
     GUI/AdminGeoEdit.h \
     GUI/AdminAnchorageDetails.h \
-    GUI/AdminCorridorDetails.h
+    GUI/AdminCorridorDetails.h \
+    GUI/AdminDockDetails.h
 
 FORMS += \
     GUI/AdminAddClient.ui \
@@ -87,7 +89,8 @@ FORMS += \
     GUI/ManagerPanel.ui \
     GUI/AdminGeoEdit.ui \
     GUI/AdminAnchorageDetails.ui \
-    GUI/AdminCorridorDetails.ui
+    GUI/AdminCorridorDetails.ui \
+    GUI/AdminDockDetails.ui
 
 RESOURCES += \
     gfx.qrc \
