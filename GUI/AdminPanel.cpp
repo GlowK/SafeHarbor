@@ -59,9 +59,15 @@ void AdminPanel::on_pushCreateNewHarbour_clicked()
 
 void AdminPanel::on_pushEditHarbour_clicked()
 {
-    AdminEditHarbour adminEditHarbour;
-    adminEditHarbour.setModal(true);
-    adminEditHarbour.exec();
+    if(tempPort.name != "temp"){
+        AdminEditHarbour adminEditHarbour(this);
+        adminEditHarbour.setModal(true);
+        connect(this,SIGNAL(sendDataToEdit(Port)),&adminEditHarbour,SLOT(receiveDataToEdit(Port)));
+        emit sendDataToEdit(tempPort);
+        tempPort.toString();
+        adminEditHarbour.exec();
+        populateComboBox();
+    }
 }
 
 void AdminPanel::on_pushClientAdd_clicked()

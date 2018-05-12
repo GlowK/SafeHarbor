@@ -18,4 +18,6 @@ void SQLConnect::ConnectToDB()
 void SQLConnect::DisconnectDB()
 {
     database.close();
+    database = QSqlDatabase();
+    database.removeDatabase(database.connectionName());
 }

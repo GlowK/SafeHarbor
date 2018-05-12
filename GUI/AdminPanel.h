@@ -19,6 +19,9 @@ public:
     Port tempPort;
     ~AdminPanel();
 
+signals:
+    void sendDataToEdit(Port);
+
 private slots:
     void on_pushCreateNewHarbour_clicked();
 
