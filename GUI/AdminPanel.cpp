@@ -14,6 +14,7 @@
 #include <QDebug>
 #include "AdminAnchorageDetails.h"
 #include "AdminCorridorDetails.h"
+#include "AdminDockDetails.h"
 
 
 AdminPanel::AdminPanel(QWidget *parent) :
@@ -44,6 +45,17 @@ void AdminPanel::receiveCorridorDetails(TransportCorridor corridorDetails, int n
     tempPort.numberOfCorridors = numberOfCorridos;
     updatePortShowLabels();
 }
+
+void AdminPanel::receiveDeleteSignal(){
+    tempPort.name = "temp";
+}
+
+void AdminPanel::receiveDockDetails(Dock dockDetails, int numberOfDocks){
+    tempPort.dock = dockDetails;
+    tempPort.numberOfDocks = numberOfDocks;
+    updatePortShowLabels();
+}
+
 
 void AdminPanel::populateComboBox(){
     SQLConnect::ConnectToDB();
@@ -100,6 +112,18 @@ void AdminPanel::on_pushEditCorridor_clicked()
         adminCorridorDetails.exec();
     }
 }
+
+void AdminPanel::on_pushEditDock_clicked()
+{
+    if(tempPort.name != "temp"){
+        AdminDockDetails adminDockDetails(this);
+        adminDockDetails.setModal(false);
+        connect(this, SIGNAL(sendDockData(Dock,int)),&adminDockDetails,SLOT(receiveDockData(Dock,int)));
+        emit sendDockData(tempPort.dock, tempPort.numberOfDocks);
+        adminDockDetails.exec();
+    }
+}
+
 void AdminPanel::on_pushClientAdd_clicked()
 {
     AdminAddClient adminAddClient;
@@ -350,9 +374,55 @@ void AdminPanel::updatePortAfterDeletion(){
     ui->labelShowChoosenPort->setText("");
 }
 
-void AdminPanel::receiveDeleteSignal(){
-    tempPort.name = "temp";
+
+
+void AdminPanel::on_pushAcceptChanges_clicked()
+{
+    if(tempPort.name != "temp" || tempPort.name != ""){
+        SQLConnect::ConnectToDB();
+
+        QSqlQuery queryUpdateAnchorage;
+        queryUpdateAnchorage.prepare("UPDATE SafeHarbour.Anchorage SET Capacity = :Capacity, MaxDraft = :MaxDraft, CostPerHour = :CostPerHour WHERE idAnchorage = :pAnchorage;");
+        queryUpdateAnchorage.bindValue(":pAnchorage", tempPort.pAnchorage);
+        queryUpdateAnchorage.bindValue(":Capacity", tempPort.anchorage.capacity);
+        queryUpdateAnchorage.bindValue(":MaxDraft", tempPort.anchorage.maxDraft);
+        queryUpdateAnchorage.bindValue(":CostPerHour", tempPort.anchorage.costPerHour);
+        queryUpdateAnchorage.exec();
+        SQLConnect::debugQuery(queryUpdateAnchorage);
+
+        QSqlQuery queryUpdateTransportCorridor;
+        queryUpdateTransportCorridor.prepare("UPDATE SafeHarbour.TransportCorridor SET MaxSpeed = :MaxSpeed, MaxWidth = :MaxWidth, MaxDraft = :MaxDraft, CostPerHour = :CostPerHour, CapPerCorridor = :CapPerCorridor WHERE idTransportCorridor = :pCorridor;");
+        queryUpdateTransportCorridor.bindValue(":pCorridor", tempPort.pCorridor);
+        queryUpdateTransportCorridor.bindValue(":MaxSpeed", tempPort.transportCorridor.maxSpeed);
+        queryUpdateTransportCorridor.bindValue(":MaxWidth", tempPort.transportCorridor.maxWidth);
+        queryUpdateTransportCorridor.bindValue(":MaxDraft", tempPort.transportCorridor.maxDraft);
+        queryUpdateTransportCorridor.bindValue(":CostPerHour", tempPort.transportCorridor.costPerHour);
+        queryUpdateTransportCorridor.bindValue(":CapPerCorridor", tempPort.transportCorridor.capacityPerCorridor);
+        queryUpdateTransportCorridor.exec();
+        SQLConnect::debugQuery(queryUpdateTransportCorridor);
+
+        QSqlQuery queryUpdateDock;
+        queryUpdateDock.prepare("UPDATE SafeHarbour.Dock SET MaxDraft = :MaxDraft, ContainersPerHour = :ContainersPerHour, PassengersPerHour = :PassengersPerHour, CostPerHour = :CostPerHour, Capacity = :Capacity WHERE idDock = :pDock;");
+        queryUpdateDock.bindValue(":pDock", tempPort.pDock);
+        queryUpdateDock.bindValue(":MaxDraft", tempPort.dock.maxDraft);
+        queryUpdateDock.bindValue(":ContainersPerHour", tempPort.dock.containerPerHour);
+        queryUpdateDock.bindValue(":PassengersPerHour", tempPort.dock.passengersPerHour);
+        queryUpdateDock.bindValue(":CostPerHour", tempPort.dock.costPerHour);
+        queryUpdateDock.bindValue(":Capacity", tempPort.dock.capacity);
+        queryUpdateDock.exec();
+         SQLConnect::debugQuery(queryUpdateDock);
+
+        QSqlQuery queryUpdatePort;
+        queryUpdatePort.prepare("UPDATE SafeHarbour.Port SET NumberOfTugboats = :NumberOfTugboats, NumberOfCorridors = :NumberOfCorridors, NumberOfDocks = :NumberOfDocks WHERE Name = :Name;");
+        queryUpdatePort.bindValue(":Name", tempPort.name);
+        queryUpdatePort.bindValue(":NumberOfTugboats", tempPort.numberOfTugboats);
+        queryUpdatePort.bindValue(":NumberOfCorridors", tempPort.numberOfCorridors);
+        queryUpdatePort.bindValue(":NumberOfDocks", tempPort.numberOfDocks);
+        queryUpdatePort.exec();
+        SQLConnect::debugQuery(queryUpdatePort);
+
+        SQLConnect::DisconnectDB();
+        populateComboBox();
+    }
 }
-
-
 

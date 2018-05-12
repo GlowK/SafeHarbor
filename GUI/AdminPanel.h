@@ -23,12 +23,14 @@ signals:
     void sendDataToEdit(Port);
     void sendAnchorageData(Anchorage);
     void sendCorridorData(TransportCorridor, int);
+    void sendDockData(Dock, int);
 
 public slots:
     void receiveChosenPort(QString);
     void receiveAnchorageDetails(Anchorage);
     void receiveCorridorDetails(TransportCorridor, int);
     void receiveDeleteSignal();
+    void receiveDockDetails(Dock, int);
 
 private slots:
     void on_pushCreateNewHarbour_clicked();
@@ -67,6 +69,10 @@ private slots:
 
     void on_pushEditCorridor_clicked();
 
+    void on_pushEditDock_clicked();
+
+    void on_pushAcceptChanges_clicked();
+
 private:
     Ui::AdminPanel *ui;
     void populateComboBox();
@@ -78,7 +84,6 @@ private:
     void checkIfPortChosen(QString);
     void updatePortShowLabels();
     void updatePortAfterDeletion();
-
 
 };
 
