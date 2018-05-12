@@ -23,6 +23,7 @@ public:
 
 signals:
     void sendNewPortName(QString);
+    void sendDeletionSignal();
 
 public slots:
     void receiveGeoLocation(QString, double, double);
@@ -33,6 +34,8 @@ private slots:
     void on_pushGeo_clicked();
 
     void on_pushSave_clicked();
+
+    void on_pushDeleteHarbour_clicked();
 
 private:
     Ui::AdminEditHarbour *ui;

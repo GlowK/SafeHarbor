@@ -77,3 +77,40 @@ void AdminEditHarbour::editPortOnDatabase(QString oldPortName){
     emit sendNewPortName(tempPort.name);
 }
 
+
+void AdminEditHarbour::on_pushDeleteHarbour_clicked()
+{
+    SQLConnect::ConnectToDB();
+
+    QSqlQuery queryDeletePort;
+    queryDeletePort.prepare("DELETE FROM SafeHarbour.Port WHERE Name = :Name;");
+    queryDeletePort.bindValue(":Name",oldPortName);
+    queryDeletePort.exec();
+    SQLConnect::debugQuery(queryDeletePort);
+
+
+    QSqlQuery queryDeleteAnchorage;
+    queryDeleteAnchorage.prepare("DELETE FROM SafeHarbour.Anchorage WHERE idAnchorage = :pAnchorage");
+    queryDeleteAnchorage.bindValue(":pAnchorage", tempPort.pAnchorage);
+    queryDeleteAnchorage.exec();
+    SQLConnect::debugQuery(queryDeleteAnchorage);
+
+    QSqlQuery queryDeleteCorridor;
+    queryDeleteCorridor.prepare("DELETE FROM SafeHarbour.TransportCorridor WHERE idTransportCorridor = :pCorridor");
+    queryDeleteCorridor.bindValue(":pCorridor", tempPort.pCorridor);
+    queryDeleteCorridor.exec();
+    SQLConnect::debugQuery(queryDeleteCorridor);
+
+    QSqlQuery queryDeleteDock;
+    queryDeleteDock.prepare("DELETE FROM SafeHarbour.Dock WHERE idDock = :pDock");
+    queryDeleteDock.bindValue(":pDock", tempPort.pDock);
+    queryDeleteDock.exec();
+    SQLConnect::debugQuery(queryDeleteDock);
+
+    SQLConnect::DisconnectDB();
+
+    connect(this,SIGNAL(sendDeletionSignal()),this->parent(),SLOT(receiveDeleteSignal()));
+    emit sendDeletionSignal();
+
+    this->close();
+}
