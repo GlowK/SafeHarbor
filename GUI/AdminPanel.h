@@ -28,6 +28,7 @@ public slots:
     void receiveChosenPort(QString);
     void receiveAnchorageDetails(Anchorage);
     void receiveCorridorDetails(TransportCorridor, int);
+    void receiveDeleteSignal();
 
 private slots:
     void on_pushCreateNewHarbour_clicked();
@@ -43,8 +44,6 @@ private slots:
     void on_pushManagerEdit_clicked();
 
     void on_pushLogOut_clicked();
-
-    void on_comboBox_currentIndexChanged(const QString &arg1);
 
     void on_pushAcceptPort_clicked();
 
@@ -78,6 +77,7 @@ private:
     void populatePortDockInf(int);
     void checkIfPortChosen(QString);
     void updatePortShowLabels();
+    void updatePortAfterDeletion();
 
 
 };

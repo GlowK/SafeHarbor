@@ -70,8 +70,12 @@ void AdminPanel::on_pushEditHarbour_clicked()
         connect(this,SIGNAL(sendDataToEdit(Port)),&adminEditHarbour,SLOT(receiveDataToEdit(Port)));
         emit sendDataToEdit(tempPort);
         adminEditHarbour.exec();
-        ui->labelShowChoosenPort->setText(this->chosenPort);
-        populatePortInformation(chosenPort);
+        if(tempPort.name == "temp"){
+            updatePortAfterDeletion();
+        }else{
+            ui->labelShowChoosenPort->setText(this->chosenPort);
+            populatePortInformation(chosenPort);
+        }
     }
 }
 
@@ -129,16 +133,15 @@ void AdminPanel::on_pushLogOut_clicked()
     this->close();
 }
 
-void AdminPanel::on_comboBox_currentIndexChanged(const QString &arg1)
-{
-    this->chosenPort = arg1;
-}
 
 void AdminPanel::on_pushAcceptPort_clicked()
 {
-    checkIfPortChosen(chosenPort);
-    ui->labelShowChoosenPort->setText(this->chosenPort);
-    populatePortInformation(chosenPort);
+    //checkIfPortChosen(chosenPort);
+    chosenPort = ui->comboBox->currentText();
+    if(chosenPort != ""){
+        ui->labelShowChoosenPort->setText(this->chosenPort);
+        populatePortInformation(chosenPort);
+    }
 }
 
 void AdminPanel::on_pushPlusAnchorage_clicked()
@@ -265,7 +268,6 @@ void AdminPanel::populatePortInformation(QString nameOfChosenPort){
     populatePortAnchorageInf(tempPort.pAnchorage);
     populatePortCorridorInf(tempPort.pCorridor);
     populatePortDockInf(tempPort.pDock);
-    //tempPort.toString();
     updatePortShowLabels();
     populateComboBox();
     SQLConnect::DisconnectDB();
@@ -340,7 +342,17 @@ void AdminPanel::updatePortShowLabels(){
     ui->labelShowDockCount->setNum(tempPort.numberOfDocks);
 }
 
+void AdminPanel::updatePortAfterDeletion(){
+    ui->labelShowAnchorageCopacity->setText("");
+    ui->labelShowTugboatCount->setText("");
+    ui->labelShowCorridorCount->setText("");
+    ui->labelShowDockCount->setText("");
+    ui->labelShowChoosenPort->setText("");
+}
 
+void AdminPanel::receiveDeleteSignal(){
+    tempPort.name = "temp";
+}
 
 
 
